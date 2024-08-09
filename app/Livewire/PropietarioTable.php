@@ -16,6 +16,7 @@ use PowerComponents\LivewirePowerGrid\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridFields;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
+use PowerComponents\LivewirePowerGrid\Facades\Rule; 
 
 final class PropietarioTable extends PowerGridComponent
 {
@@ -57,7 +58,7 @@ final class PropietarioTable extends PowerGridComponent
             ->add('documento')
             ->add('codigo_telefono')
             ->add('telefono')
-            ->add('estado')
+            ->add('Estatus')
             ->add('created_at');
     }
 
@@ -83,7 +84,7 @@ final class PropietarioTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Estado', 'estado')
+            Column::make('Estatus', 'estado')
                 ->sortable()
                 ->searchable(),
 
@@ -94,7 +95,7 @@ final class PropietarioTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
  */
-            Column::action('Action')
+            Column::action('Acciones')
         ];
     }
 
@@ -133,15 +134,15 @@ final class PropietarioTable extends PowerGridComponent
         ];
     }
 
-    /*
+
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
+            Rule::rows()
+                ->when(fn ($row) => $row->estado == 'INACTIVO')
+                ->setAttribute('class', 'bg-red-100 hover:!bg-red-200'),
         ];
     }
-    */
+
 }

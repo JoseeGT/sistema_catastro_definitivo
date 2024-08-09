@@ -1,5 +1,5 @@
 <div>
-    <x-card class=" max-w-2xl " shadow="xl" title="Crear inmueble">
+    <x-card class=" max-w-2xl " shadow="xl" title="Registrar inmueble">
         <form wire:submit.prevent="submit">
             <div class="flex gap-1 py-2">
 
@@ -10,7 +10,7 @@
                 <x-maskable label="niv" placeholder="000" wire:model="niv" mask="###" />
                 <x-maskable label="uni" placeholder="000" wire:model="uni" mask="###" />
             </div>
-
+            
             <div class="flex gap-2 py-2 items-end">
                 <x-select
                     label="buscar Propietario"
@@ -21,7 +21,7 @@
                     option-value="id"
                     wire:model="propietario_id"
                 />
-                <x-button class="max-h-10" wire:click="$dispatch('openModal', { component: 'create-propietario'})">Crear usuarior</x-button>
+                <x-boton class="max-h-10" wire:click="$dispatch('openModal', { component: 'create-propietario'})">Registrar usuario</x-boton>
    
             </div>
             <div class="flex gap-2 py-2">
@@ -69,10 +69,10 @@
                 </x-select>
             </div>
      
-            <div class="flex justify-between">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+            <div class="flex justify-end gap-3">
+                <x-button class="h-10" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
 
-                <x-button label="Crear inmueble" type="submit"/>
+                <x-boton class="h-10" label="Registrar inmueble" type="submit"> Registrar inmueble</x-boton>
             </div>
         </form>
         
@@ -83,7 +83,7 @@
 
 {{-- 
 <div>
-    <x-card class=" max-w-2xl " shadow="xl" title="Crear inmueble">
+    <x-card class=" max-w-2xl " shadow="xl" title="Registrar inmueble">
         <form wire:submit.prevent="submit">
             <div class="flex gap-1 py-2">
 
@@ -156,7 +156,7 @@
 
             <div class="flex justify-end">
 
-                <x-button label="Crear inmueble" type="submit"/>
+                <x-button label="Registrar inmueble" type="submit"/>
             </div>
         </form>
         

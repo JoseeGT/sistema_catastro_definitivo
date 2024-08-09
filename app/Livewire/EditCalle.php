@@ -30,6 +30,8 @@ class EditCalle extends ModalComponent
         ]);
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'EDITAR',
+
             'descripcion' => 'Editó Calle: '.$this->nombre,
             'fecha' => Carbon::now(),
         ]);

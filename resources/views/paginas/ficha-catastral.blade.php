@@ -4,7 +4,7 @@
             Ficha Catastral
         </h2>
     </x-slot>
-    <x-button onclick="Livewire.dispatch('openModal', { component: 'create-ficha' })">Generar Ficha</x-button>
+    <x-boton onclick="Livewire.dispatch('openModal', { component: 'create-ficha' })">Generar Ficha</x-boton>
     
     <div class="bg-white p-2 rounded-lg mt-10">
 

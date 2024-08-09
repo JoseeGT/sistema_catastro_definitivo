@@ -30,6 +30,7 @@ class EditSector extends ModalComponent
         ]);
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'EDITAR',
             'descripcion' => 'Editó Sector: '.$this->nombre,
             'fecha' => Carbon::now(),
         ]);

@@ -2,7 +2,7 @@
 
     <x-card class=" max-w-xl class" shadow="xl" title="Crear Usuario">
         <form wire:submit="submit">
-            <x-input class="my-2" label="Nombre del usuario*" placeholder="Nombre Completo" wire:model.alive="nombre"/>
+            <x-input  icon="user" class="my-2" label="Nombre del usuario*" placeholder="Nombre Completo" wire:model.alive="nombre"/>
  
             <div class="my-2 flex gap-3">
                 <div class=" basis-4/12 my-2">
@@ -13,7 +13,7 @@
                 </div>
                 
                 <div class="basis-8/12 my-2">
-                    <x-input type="text" label="documento*" placeholder="documento" wire:model.alive="documento"/>
+                    <x-input type="text" icon="identification" label="documento*" placeholder="documento" wire:model.alive="documento"/>
 
                 </div>
             </div>
@@ -26,14 +26,16 @@
                 </div>
                 <x-phone class=" basis-8/12 my-2"
                         id="multiple-mask"
+                        icon="phone"
+
                         wire:model.alive="telefono"
                         label="telefono"
                         placeholder="telefono del propietario"
                         :mask="[' ###-####']"
 />
             </div>
-            <x-input class="my-2" type="password" label="Contraseña*" placeholder="documento" wire:model.alive="password"/>
-            <x-input  class="my-2 " type="text" label="Correo Electronico*" placeholder="documento" wire:model.alive="email"/>
+            <x-input class="my-2" type="password" label="Contraseña*" placeholder="********" wire:model.alive="password"/>
+            <x-input  class="my-2 " type="text" label="Correo Electronico*" placeholder="ejemplo@ejemplo.com" wire:model.alive="email"/>
 
             <x-native-select wire:model="estado"
             label="Estado"

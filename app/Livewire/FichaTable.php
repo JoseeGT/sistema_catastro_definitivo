@@ -129,7 +129,7 @@ final class FichaTable extends PowerGridComponent
             Column::make('Calle', 'calle1_nombre'), 
             Column::make('N°', 'numero_civico'),
             Column::make('Sector', 'sector_nombre'),
-            column::make('Estado', 'estado'),
+            // column::make('Estado', 'estado'),
 
 
 

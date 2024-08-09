@@ -12,9 +12,9 @@
                 placeholder="xx/xx/xxxx"
                 :min="now()"
                 />     
-                <div class="flex items-center justify-between">
-                    <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                    <x-button label="generar inspección" type="GenerarInspeccion"/>
+                <div class="flex items-center justify-end gap-3">
+                    <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                    <x-boton label="generar inspección" type="GenerarInspeccion">Generar inspección</x-boton>
                 </div>
             </form>  
         </x-card>

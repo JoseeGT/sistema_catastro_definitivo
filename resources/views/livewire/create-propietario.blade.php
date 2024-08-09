@@ -1,8 +1,8 @@
 <div>
 
-    <x-card class=" max-w-xl class" shadow="xl" title="Crear Propietario">
+    <x-card class=" max-w-xl class" shadow="xl" title="Registrar Propietario">
         <form wire:submit="submit">
-            <x-input class="my-2" label="nombre*" placeholder="Nombre del propietario" wire:model.live="nombre"/>
+            <x-input icon="user" class="my-2" label="nombre*" placeholder="Nombre del propietario" wire:model.live="nombre"/>
  
             <div class="my-2 flex gap-3">
                 <div class=" basis-4/12 my-2">
@@ -13,7 +13,7 @@
                 </div>
                 
                 <div class="basis-8/12 my-2">
-                    <x-maskable type="text" label="documento*" placeholder="documento" wire:model.live="documento"  id="multiple"    mask="##########"
+                    <x-maskable icon="identification" type="text" label="documento*" placeholder="10000000" wire:model.live="documento"  id="multiple"    mask="##########"
                     />
 
                 </div>
@@ -29,14 +29,16 @@
                         id="multiple-mask"
                         wire:model.live="telefono"
                         label="telefono"
-                        placeholder="telefono del propietario"
+                        placeholder="123-4567"
+                        icon="phone"
+
                         :mask="[' ###-####']"
-/>
+/>  
             </div>
             
-            <div class="flex justify-between gap-5">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-button label="Crear Propietario" type="submit"/>
+            <div class="flex justify-end gap-3">
+                <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-boton label="Registrar Propietario" type="submit">Registrar Propietario</x-boton>
 
 
             </div>

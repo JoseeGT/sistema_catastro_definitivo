@@ -1,8 +1,8 @@
 <div>
 
-    <x-card class=" max-w-xl class" shadow="xl" title="Crear Usuario">
+    <x-card class=" max-w-xl class" shadow="xl" title="Registrar Usuario">
         <form wire:submit="submit">
-            <x-input class="my-2" label="Nombre del usuario*" placeholder="Nombre Completo" wire:model.live="nombre"/>
+            <x-input icon="user" class="my-2" label="Nombre del usuario*" placeholder="Nombre Completo" wire:model.live="nombre"/>
  
             <div class="my-2 flex gap-3">
                 <div class=" basis-4/12 my-2">
@@ -13,7 +13,7 @@
                 </div>
                 
                 <div class="basis-8/12 my-2">
-                    <x-maskable type="text" label="documento*" placeholder="documento" wire:model.live="documento"  id="multiple"    mask="##########"
+                    <x-maskable type="text" icon="identification" label="documento*" placeholder="documento" wire:model.live="documento"  id="multiple"    mask="##########"
                     />
                 </div>
             </div>
@@ -26,6 +26,7 @@
                 </div>
                 <x-phone class=" basis-8/12 my-2"
                         id="multiple-mask"
+                        icon="phone"
                         wire:model.alive="telefono"
                         label="telefono"
                         placeholder="telefono del propietario"
@@ -33,17 +34,17 @@
 />
        
             </div>
-            <x-input class="my-2" type="password" label="Contraseña*" placeholder="documento" wire:model.alive="password"/>
-            <x-input  class="my-2 " type="text" label="Correo Electronico*" placeholder="documento" wire:model.alive="email"/>
+            <x-input class="my-2" type="password" label="Contraseña*" placeholder="********" wire:model.alive="password"/>
+            <x-input  class="my-2 " type="text" label="Correo Electronico*" placeholder="ejemplo@ejemplo.com" wire:model.alive="email"/>
             <x-select class="mb-5 " wire:model.alive="rol"
-            label="Rol del Usuario"
+            label="Rol del Usuario*"
             placeholder="seleccione"
             :options="['director', 'subdirector', 'funcionario', 'inspector']"/>
 
 
-            <div class="flex justify-between gap-5">
+            <div class="flex justify-end gap-3">
                 <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-button label="Crear Usuario" type="submit"/>
+                <x-boton label="Crear Usuario" type="submit">Registrar</x-boton>
             </div>
 
         </form>

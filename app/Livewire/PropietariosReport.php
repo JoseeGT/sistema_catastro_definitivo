@@ -24,9 +24,7 @@ class PropietariosReport extends ModalComponent
             'user_id' => Auth::user()->id,
             'descripcion' => 'Generó reporte de inmuebles',
             'fecha' => Carbon::now(),
-        ]);
-        // Llamar al método JavaScript para abrir la nueva pestaña
-        
+        ]);        
     }
 
     public function render()

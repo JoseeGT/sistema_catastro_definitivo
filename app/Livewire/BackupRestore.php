@@ -80,59 +80,61 @@ class BackupRestore extends Component
     
         Storage::disk('local')->put('backups/Base_de_datos_CATASTRO.sql', $sql);
     }
-public function restoreDatabase()
-{
-    $this->validate([
-        'backupFile' => 'required|mimes:sql',
-    ]);
+    public function restoreDatabase()
+    {
+        $this->validate([
+            'backupFile' => 'required|mimes:sql',
+        ]);
 
-    if ($this->backupFile) {
-        $fileName = $this->backupFile->getClientOriginalName();
-        $filePath = $this->backupFile->storeAs('backups', $fileName);
+        if ($this->backupFile) {
+            $fileName = $this->backupFile->getClientOriginalName();
+            $filePath = $this->backupFile->storeAs('backups', $fileName);
 
-        // Truncate all tables before restoring
-        $tables = [
-            'auditoria',
-            'calculos',
-            'calles',
-            'codigos_catastrales',
-            'direcciones',
-            'divisiones',
-            'fichas',
-            'inmuebles',
-            'inmuebles_documentos',
-            'inspecciones',
-            'propietarios',
-            'sectores',
-            'tareas',
-            'tenencias_terrenos',
-            'tipos_construccion',
-            'unificaciones',
-            'users'
-        ];
+            // Truncate all tables before restoring
+            $tables = [
+                'auditoria',
+                'calculos',
+                'calles',
+                'codigos_catastrales',
+                'direcciones',
+                'divisiones',
+                'fichas',
+                'inmuebles',
+                'inmuebles_documentos',
+                'inspecciones',
+                'propietarios',
+                'sectores',
+                'tareas',
+                'tenencias_terrenos',
+                'tipos_construccion',
+                'unificaciones',
+                'users'
+            ];
 
-        try {
-            DB::beginTransaction();
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+            try {
+                DB::beginTransaction();
+                DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-            foreach ($tables as $table) {
-                DB::table($table)->truncate();
+                foreach ($tables as $table) {
+                    DB::table($table)->truncate();
+                }
+
+                DB::unprepared(file_get_contents(storage_path('app/' . $filePath)));
+
+                DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+                DB::commit();
+
+                session()->flash('success', 'Database restored successfully.');
+            } catch (\Exception $e) {
+                DB::rollback();
+                session()->flash('error', 'Error restoring database: ' . $e->getMessage());
             }
-
-            DB::unprepared(file_get_contents(storage_path('app/' . $filePath)));
-
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-            DB::commit();
-
-            session()->flash('success', 'Database restored successfully.');
-        } catch (\Exception $e) {
-            DB::rollback();
-            session()->flash('error', 'Error restoring database: ' . $e->getMessage());
         }
+        // $this->dispatchBrowserEvent('close-modal', ['modalId' => 'restore-database-modal']);
+        $this->successDialog();
+        $this->reset();
+
     }
-    dispatch('close');
-    $this->successDialog();
-}
        public function successDialog(): void
     {
         $this->dialog()->show([

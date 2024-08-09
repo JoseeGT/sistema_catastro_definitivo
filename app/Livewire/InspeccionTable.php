@@ -136,7 +136,7 @@ final class InspeccionTable extends PowerGridComponent
             Column::make('Sector', 'sector_nombre'),
             column::make('fecha asignada', 'fecha_formateada', 'fecha'),
             column::make('nota', 'nota'),
-            Column::make('estado', 'estado')
+            Column::make('Estatus', 'estado')
                 ->sortable()
                 ->searchable(),
 
@@ -183,6 +183,7 @@ final class InspeccionTable extends PowerGridComponent
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
                 ->openModal('realizar-inspeccion', ['id' => $row->id]),];
+            
     }
 
     public function actionRules($row): array
@@ -190,8 +191,8 @@ final class InspeccionTable extends PowerGridComponent
        return [
             // Hide button edit for ID 1
             Rule::rows()
-                ->when(fn ($row) => $row->id == 1)
-                ->setAttribute('class', 'bg-green-200'),
+                ->when(fn ($row) => $row->estado == 'realizada')
+                ->setAttribute('class', 'bg-green-100 hover:!bg-green-200'),
             Rule::button('edit')
                 ->when(fn($row) => $row->estado == 'realizada')
                 ->hide(),

@@ -6,7 +6,10 @@
     </x-slot>
 
     <livewire:dividir/>
-    {{-- <livewire:division-table/> --}}
+    <div class="bg-white p-2 rounded-lg mt-10"> 
+        <livewire:divisiones-table/>
+    </div>
     <livewire:unificar/>
-    {{-- <livewire:unificacion-table/> --}}
-</x-app-layout>
+    <div class="bg-white p-2 rounded-lg mt-10"> 
+        <livewire:unificaciones-table/>
+    </div></x-app-layout>

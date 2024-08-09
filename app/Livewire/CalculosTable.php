@@ -140,7 +140,11 @@ final class CalculosTable extends PowerGridComponent
             ->add('inspeccion')
             ->add('area_terreno')
             ->add('area_construccion')
-
+            ->add('ref', function ($var) {
+                $year = Carbon::now()->format('y'); // Año actual en formato YY
+                $id = str_pad($var->id, 4, '0', STR_PAD_LEFT); // ID con ceros a la izquierda hasta 4 dígitos
+                return $year . '-' . $id;
+            })
             ->add('plano_mensura', function ($var) {
                 return $var->plano_mensura ? 'Si' : 'No'; // Yes/No
             })
@@ -156,6 +160,7 @@ final class CalculosTable extends PowerGridComponent
         return [
             Column::make('Id', 'id')
                 ->searchable(),
+            Column::make('Referencia', 'ref'),
             Column::make('Sec', 'sec')
             ->searchable(),
         Column::make('Man', 'man')
@@ -227,6 +232,7 @@ final class CalculosTable extends PowerGridComponent
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
                 ->route('invoice',  [
                     'data' => json_encode([
+                        'ref' => $row->ref,
                         'inmueble_id' => $row->inmueble_id,
                         'propietario_nombre' => $row->propietario_nombre,
                         'propietario_td' => $row->propietario_td,

@@ -9,7 +9,6 @@ use App\Models\Inspeccion as InspeccionModel;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RealizarInspeccion extends ModalComponent
@@ -52,6 +51,9 @@ class RealizarInspeccion extends ModalComponent
     public $lindero_oeste;
     public $plano;
     public $planoPath;
+    public $previousPlanoPath;
+
+    public $planoPreviewUrl;
 
     protected $rules = [
         'area_terreno' => 'required|numeric',
@@ -62,13 +64,39 @@ class RealizarInspeccion extends ModalComponent
         'lindero_oeste' => 'max:50|required',
     ];
 
+    public function updatedPlano()
+    {
+        $this->validate([
+            'plano' => 'mimes:pdf|max:2048',
+        ]);
+    
+        if ($this->plano) {
+            // Guarda el nuevo archivo y obtiene la nueva ruta
+            $newPlanoPath = $this->plano->store('planos', 'public');
+            $this->planoPath = $newPlanoPath;
+            // Actualiza la URL de vista previa
+            $this->planoPreviewUrl = Storage::url($newPlanoPath);
+            
+            // Elimina el archivo anterior si existe
+            if ($this->previousPlanoPath && Storage::exists($this->previousPlanoPath)) {
+                Storage::delete($this->previousPlanoPath);
+            }
+            
+            // Actualiza la ruta del archivo anterior
+            $this->previousPlanoPath = $newPlanoPath;
+        }
+    }
+    
+
     public function mount($id)
     {
         $this->inspeccion = InspeccionModel::findOrFail($id);
         $this->inmueble_id = $this->inspeccion->inmueble_id;
         $this->inmueble = Inmueble::find($this->inmueble_id);
         $this->planoPath = $this->inmueble->plano_path;
+        // $this->planoPreviewUrl = $this->planoPath ? Storage::url($this->planoPath) : null;
 
+        // Asignar valores a las propiedades del componente
         $this->propietario = $this->inmueble->propietario->nombre;
         $this->calle_id = $this->inmueble->direccion->calle1->id;
         $this->sector_id = $this->inmueble->direccion->sector->id;
@@ -85,7 +113,7 @@ class RealizarInspeccion extends ModalComponent
         $this->lindero_norte = $this->inmueble->Lindero_norte;
         $this->lindero_sur = $this->inmueble->Lindero_sur;
         $this->lindero_este = $this->inmueble->Lindero_este;
-        $this->lindero_oeste = $this->inmueble->Lindero_oeste;    
+        $this->lindero_oeste = $this->inmueble->Lindero_oeste;
     }
 
     public function save()
@@ -101,7 +129,7 @@ class RealizarInspeccion extends ModalComponent
 
         // Verificar si hay un archivo plano y almacenarlo
         if ($this->plano) {
-            $this->planoPath = $this->plano->store('planos', 'public');
+            $this->planoPath = $this->planoPreviewUrl/* store('planos', 'public') */;
         }
 
         // Actualizar el modelo Inmueble con los datos del formulario
@@ -115,19 +143,21 @@ class RealizarInspeccion extends ModalComponent
             'plano_path' => $this->planoPath,
         ]);
 
+        // Actualizar el estado de la inspección
         $this->inspeccion->update([
             'estado' => 'realizada',
         ]);
 
+        // Registrar la auditoría
         Auditoria::create([
             'user_id' => Auth::user()->id,
-            'descripcion' => 'completó inspección inmueble '.$this->sec." ".$this->man." ".$this->par." ".$this->sbp." ".$this->niv." ".$this->uni,
+            'accion' => 'INSPECCION',
+            'descripcion' => 'completó inspección inmueble ' . $this->sec . " " . $this->man . " " . $this->par . " " . $this->sbp . " " . $this->niv . " " . $this->uni,
             'fecha' => Carbon::now(),
         ]);
 
-        // Opcional: Mostrar un mensaje de éxito o redirigir a otra página
-        $this->dispatch('pg:eventRefresh-InspeccionTable');
 
+        // Cerrar el modal
         $this->closeModal();
     }
 

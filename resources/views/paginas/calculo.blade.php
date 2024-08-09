@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
     <div class="flex gap-48 w-full items-end  ">
-        <x-button class="max-h-10" onclick="Livewire.dispatch('openModal', { component: 'create-calculo' })">Generar Calculo</x-button>
+        <x-boton class="max-h-10" onclick="Livewire.dispatch('openModal', { component: 'create-calculo' })">Generar Calculo</x-boton>
         <livewire:calculo-report/>
     </div>
 

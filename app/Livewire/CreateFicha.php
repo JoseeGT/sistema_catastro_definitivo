@@ -87,7 +87,10 @@ class CreateFicha extends ModalComponent
         'Lindero_sur' => 'max:50|required',
         'Lindero_este' => 'max:50|required',
         'Lindero_oeste' => 'max:50|required',
-        'fecha_documento' => '',
+        'fecha_documento' => 'required',
+        'tipo_documento' => 'required',
+        'num_documento' => 'required',
+        'folio_documento' => 'required',
         // 'estado' => 'required',
 
 
@@ -226,6 +229,7 @@ class CreateFicha extends ModalComponent
         $this->closeModal();
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'GENERAR',
             'descripcion' => 'Generó ficha: '.$this->sec." ".$this->man." ".$this->par." ".$this->sbp." ".$this->niv." ".$this->uni,
             'fecha' => Carbon::now(),
         ]);

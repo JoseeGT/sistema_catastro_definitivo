@@ -8,7 +8,7 @@
     {{-- <livewire:create-propietario /> --}}
     @can('crear propietarios')
     <div class="flex gap-20 w-full items-end  ">
-        <x-button class="max-h-10" onclick="Livewire.dispatch('openModal', { component: 'create-propietario' })">Crear Propietario</x-button>  
+        <x-boton class="max-h-10" onclick="Livewire.dispatch('openModal', { component: 'create-propietario' })">Registrar Propietario</x-boton>  
         
         <livewire:propietarios-report/>
     </div>

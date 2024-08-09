@@ -9,6 +9,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
+use PowerComponents\LivewirePowerGrid\Facades\Rule;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -42,6 +43,8 @@ final class InmuebleTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return Inmueble::query()
+                ->where('inmuebles.estado', '=', 'ACTIVO')->orWhere('inmuebles.estado', '=', 'INACTIVO')
+
                 ->join('tenencias_terrenos',function($tenencias_terreno){
                     $tenencias_terreno->on('inmuebles.tenencia_terreno_id', '=', 'tenencias_terrenos.id');
                 })
@@ -155,8 +158,9 @@ final class InmuebleTable extends PowerGridComponent
             ->add('Lindero_sur')
             ->add('Lindero_este')
             ->add('Lindero_oeste')
-            ->add('estado')
-            ->add('created_at');
+            ->add('Estatus')
+            ->add('created_at')
+            ->add('updated_at');
     }
 
     public function boot(): void
@@ -172,6 +176,7 @@ final class InmuebleTable extends PowerGridComponent
             // Column::make('Catastral', 'codigos_catastrales'),
             column::make('N°', '.')
                 ->index(),
+            // Column::make('Codigo  Catastral', 'codigos_catastrales'),
             Column::make('Sec', 'sec')
                 
                 ->searchable(),
@@ -230,7 +235,7 @@ final class InmuebleTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(), */
 
-            Column::make('Estado', 'estado')
+            Column::make('Estatus', 'estado')
                 ->sortable()
                 ->searchable(),
 
@@ -253,8 +258,7 @@ final class InmuebleTable extends PowerGridComponent
                 ->dataSource([
                     ['id' => 'ACTIVO', 'name' => 'ACTIVO'],
                     ['id' => 'INACTIVO', 'name' => 'INACTIVO'],
-                    ['id' => 'UNIFICACION INACTIVA', 'name' => 'UNIFICACION INACTIVA'],
-                    ['id' => 'DIVISION INACTIVA', 'name' => 'DIVISION INACTIVA'],
+
 
                 ])
                 ->optionLabel('name')
@@ -338,15 +342,27 @@ final class InmuebleTable extends PowerGridComponent
         ];
     }
 
-    /*
+    
     public function actionRules($row): array
     {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
+        return [
+            Rule::rows()
+                ->when(fn ($row) => $row->estado == 'INACTIVO')
+                ->setAttribute('class', 'bg-red-100 hover:bg-red-200'),
+                Rule::rows()
+                ->when(fn ($row) => $row->estado == 'UNIFICACION INACTIVA')
+                ->setAttribute('class', 'bg-gray-300 text-gray-600 hover:bg-gray-300 ' ),
+                Rule::rows()
+                ->when(fn ($row) => $row->estado == 'DIVISION INACTIVA')
+                ->setAttribute('class', 'bg-slate-300 text-white-600'),
         ];
+            // Rule::button('edit')
+            //     ->when(fn ($dish) => $dish->id == 5)
+            //     ->bladeComponent('livewire-powergrid::icons.arrow', [
+            //         'dish-id' => 'id',
+            //         'class'   => 'w-5 h-5 !text-red-500',
+            //     ]),
+
     }
-    */
+    
 }

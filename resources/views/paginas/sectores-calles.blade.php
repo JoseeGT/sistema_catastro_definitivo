@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <x-button onclick="Livewire.dispatch('openModal', { component: 'sectores-calles' })">registrar</x-button>
+    <x-boton onclick="Livewire.dispatch('openModal', { component: 'sectores-calles' })">registrar Sector/Calle</x-boton>
     
     <div class="grid align-content-start gap-5 grid-cols-2">
         <div class="bg-white p-2 rounded-lg">

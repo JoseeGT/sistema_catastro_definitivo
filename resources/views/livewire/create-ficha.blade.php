@@ -1,5 +1,5 @@
 <div>
-    <x-card class=" max-w-5xl " shadow="xl" title="Crear Ficha">
+    <x-card class=" max-w-5xl " shadow="xl" title="Generar Ficha">
         <div class="flex gap-2 items-end">
             <x-select
             label="Inmueble"
@@ -11,7 +11,7 @@
             wire:model.live="inmueble_id"
         />
     
-        <x-button class="h-10" wire:click="loadInmuebleData({{ $inmueble_id }})"> Cargar Inmueble</x-button>
+        <x-boton class="h-10" wire:click="loadInmuebleData({{ $inmueble_id }})"> Cargar Inmueble</x-boton>
 
         </div>    
         <form wire:submit.prevent="submit">
@@ -124,8 +124,8 @@
             :options="['pendiente', 'realizada', 'entregada']"
         /> --}}
             
-            <div class="flex justify-end gap-5">
-                <x-button label="Crear" type="submit"/>
+            <div class="flex justify-end gap-3">
+                <x-boton label="Crear" type="submit">Generar</x-boton>
             </div>
         </form>
 

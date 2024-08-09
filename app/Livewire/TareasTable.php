@@ -9,6 +9,7 @@ use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
 use PowerComponents\LivewirePowerGrid\Facades\Filter;
+use PowerComponents\LivewirePowerGrid\Facades\Rule;
 use PowerComponents\LivewirePowerGrid\Footer;
 use PowerComponents\LivewirePowerGrid\Header;
 use PowerComponents\LivewirePowerGrid\PowerGrid;
@@ -130,15 +131,15 @@ final class TareasTable extends PowerGridComponent
     //     ];
     // }
 
-    /*
+    
     public function actionRules($row): array
     {
        return [
             // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
+            Rule::rows()
+            ->when(fn ($row) => $row->estado == 'Finalizado')
+            ->setAttribute('class', 'bg-green-100 hover:!bg-green-200'),
         ];
     }
-    */
+    
 }

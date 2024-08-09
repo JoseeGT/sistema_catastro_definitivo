@@ -46,6 +46,7 @@ class VerTareas extends Component
         }
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'COMPLETAR',
             'descripcion' => 'Completó Tarea: '.$tarea->titulo,
             'fecha' => Carbon::now(),
         ]);

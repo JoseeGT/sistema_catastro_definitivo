@@ -27,3 +27,12 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+.hidden-scrollbar {
+    scrollbar-width: none; /* Para Firefox */
+    -ms-overflow-style: none; /* Para Internet Explorer y Edge */
+}
+
+.hidden-scrollbar::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}

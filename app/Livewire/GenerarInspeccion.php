@@ -2,10 +2,13 @@
 
 namespace App\Livewire;
 
+use App\Models\Auditoria;
 use Livewire\Component;
 use Livewire\Attributes\On; 
 use App\Models\Inspeccion;
+use Carbon\Carbon;
 use GuzzleHttp\Promise\Create;
+use Illuminate\Support\Facades\Auth;
 use LivewireUI\Modal\ModalComponent;
 
 class GenerarInspeccion extends ModalComponent
@@ -33,7 +36,12 @@ class GenerarInspeccion extends ModalComponent
             'estado' => $this->estado,
             'inspector_id' => $this->inspector_id
         ]);
-
+        Auditoria::create([
+            'user_id' => Auth::user()->id,
+            'accion' => 'GENERAR',
+            'descripcion' => 'Generó inspección inmueble ',
+            'fecha' => Carbon::now(),
+        ]);
         $this->closeModal();
         $this->dispatch('pg:eventRefresh-inspeccionTable');
     }

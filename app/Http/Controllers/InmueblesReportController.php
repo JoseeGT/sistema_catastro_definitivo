@@ -39,13 +39,16 @@ class InmueblesReportController extends Controller
             // Sobrescribe el método Header
             function Header()
             {
-                // Mueve el cursor a la derecha y coloca las imágenes
-                $this->Image(public_path("logo/logo_alcaldia.png"), 8, 8, 60);
-                $this->Image(public_path("logo/logocatastro.png"), 170, 3, 30);
-                
+                $this->Image(public_path("logo/logo_alcaldia.png"), 8, 10, 40);
+                $this->Image(public_path("logo/logocatastro.png"), 170, 10, 30);
+                $this->SetFont('Arial', '', 10);
+
+                $this->SetY(18);
+                $this->SetX(14);
+                $this->Cell(0, 10, 'RIF: G200033746', 0, 0);
                 // Título centrado
                 $this->SetFont('Arial', '', 10);
-                $this->SetY(25);
+                $this->SetY(10);
                 $this->SetX(8);
                 $this->Cell(0, 8, utf8_decode('REPÚBLICA BOLIVARIANA DE VENEZUELA'), 0, 0, 'C');
                 $this->Ln(5);
@@ -53,8 +56,6 @@ class InmueblesReportController extends Controller
                 $this->Cell(0, 10, utf8_decode('ALCALDÍA DEL MUNICIPIO LIBERTADOR'), 0, 0, 'C');
                 $this->Ln(5);
                 $this->Cell(0, 10, 'PALO NEGRO - ESTADO ARAGUA', 0, 0, 'C');
-                $this->Ln(5);
-                $this->Cell(0, 10, 'RIF: G200033746', 0, 0, 'C');
                 $this->Ln(5); 
                 $this->Cell(0, 10, utf8_decode('DIRECCIÓN DE CATASTRO Y'), 0, 0, 'C');
                 $this->Ln(5); 
@@ -66,7 +67,7 @@ class InmueblesReportController extends Controller
                 $this->Ln(5);
                 $this->SetX(77);
                 $this->Cell(55, 7, 'Reporte de Inmuebles', "B", 1, 'C');
-                $this->Ln(10);
+                $this->Ln(15);
             }
             // Sobrescribe el método Footer si lo deseas
             function Footer()
@@ -211,10 +212,10 @@ class InmueblesReportController extends Controller
 
            // Concatenar dirección
            $direccion = $inmueble->direccion->calle1->nombre . ' ' .
-                        utf8_decode('Nro '). $inmueble->direccion->numero_civico . ' ' .
+                        utf8_decode('Nro. '). $inmueble->direccion->numero_civico . ' ' .
                         // $inmueble->direccion->calle2->nombre . ', ' .
                         $inmueble->direccion->nota . ', ' .
-                        $inmueble->direccion->sector->nombre;
+                        "S/".$inmueble->direccion->sector->nombre;
 
                         $pdf->Row(array($i, $codigoCatastral,utf8_decode($direccion), utf8_decode($inmueble->propietario->nombre),$inmueble->propietario->tipo_documento .$inmueble->propietario->documento));
 

@@ -28,30 +28,34 @@
   <!-- ========== { HEADER }==========  -->
   <header class="fixed top-0 left-0 right-0 z-50">
      <nav class="bg-gray-800">
-        <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
           <div class="flex justify-between">
-          <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">Catastro | Municipio Libertador</div>
+
+          <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">        <x-application-logo class="block h-20 p-3 w-auto fill-white" />
+            Catastro | Municipio Libertador</div>
             
             <div class="flex flex-row">
               <!-- nav menu -->
               <ul class="navbar hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
 
                 <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#acerca">Acerca</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Inicio</a>
                 </li>
                 <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#ubicacion">Ubicación</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/acerca">Historia</a>
                 </li>
-                {{-- <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#archivos">Descargar Archivos</a>
-                </li> --}}
                 <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="#requisitos">Requisitos para Tramites</a>
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/preguntas">Preguntas Frecuentes</a>
                 </li>
+                <li class="relative border-l border-gray-800 hover:bg-gray-900">
+                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/archivos">Descargar Archivos</a>
+                </li>
+
                 <li class="relative border-l border-gray-900 bg-gray-700 hover:bg-gray-900">
                   <a class="block py-3 px-6 border-b-2 border-transparent" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
                 </li>
               </ul>
+
 
               <!-- search form & mobile nav -->
               <div class="flex flex-row items-center text-gray-300">
@@ -71,6 +75,14 @@
         </div>
      </nav>
   </header><!-- end header -->
+
+<script>
+    function toggleFAQ(button) {
+        const content = button.nextElementSibling;
+        button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "false" ? "true" : "false");
+        content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
+    }
+</script>
 
   <main id="content">
     <!-- advertisement -->
@@ -99,7 +111,7 @@
     <div class=" m-auto w-4/5 bg-white mb-12">  
 
       <div class="container m-auto px-2 text-gray-600 md:px-2 xl:px-2">
-        <h1 id="acerca" class="text-2xl mb-10 text-gray-900 font-bold md:text-4xl border-b-2 border-gray-300 my-4  ">Acerca de Nosotros</h1>
+        <h1 id="acerca" class="text-2xl mb-10 text-gray-900 font-bold md:text-4xl border-b-2 border-gray-300 my-4  ">Misión y Visión</h1>
 
           <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
             <div class=" md:5/12 lg:w-5/12 rounded-sm">
@@ -154,168 +166,6 @@
 
 
 
-{{-- 
-    <div class="max-w-2xl mx-auto mt-24">
-      <div class="flex gap-3 bg-white border border-gray-300 rounded-xl overflow-hidden items-center justify-start">
-  
-          <div class="relative w-32 h-32 flex-shrink-0">
-              <img class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50" loading="lazy" src="https://via.placeholder.com/150">
-          </div>
-  
-          <div class="flex flex-col gap-2 py-2">
-  
-              <p class="text-xl font-bold">Post title</p>
-  
-              <p class="text-gray-500">
-                  Description of your post/article,
-                  Description of your post/article,
-              </p>
-  
-              <span class="flex items-center justify-start text-gray-500">
-                  <svg class="w-4 h-4 mr-1 mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
-                  </svg>
-                  <a href="amitpachange.com" target="_blank">amitpachange.com</a>
-              </span>
-  
-          </div>
-  
-      </div>
-  
-  </div> --}}
-{{-- 
-  <section>
-    <!-- Container -->
-    <div class="mx-auto w-full px-5 py-12 md:px-10 md:py-16 lg:py-16 bg-gray-700">
-      <!-- Component -->
-      <div class="flex flex-col items-center">
-        <!-- Heading Content -->
-        <div class="">
-          <h2 class="mb-5 text-3xl font-bold md:text-5xl w-full max-w-3xl text-center text-white"> Descargas</h2>
-        </div>
-        <div class="w-full flex gap-10 flex-col items-center justify-center lg:flex-row">
-          <!-- Item -->
-          <div class="bg-gray-100 shadow-md rounded my-6 overflow-hidden w-full max-w-sm">
-            <table class="w-full">
-              <thead>
-                <tr class="border-b border-gray-300">
-                  <th colSpan="2" class="py-6 text-center text-lg w-full"> Documentos </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="border-b border-gray-300">
-                  <td class="py-3 px-6 md:px-122 text-left whitespace-nowrap">
-                    <div class="flex items-center">
-                      <span class="font-semibold">Plano del Municipio.</span>
-                    </div>
-                  </td>
-                  <td class="py-3 px-6 md:px-12 text-center">
-                    <div class="relative flex gap-3 items-center justify-center">
-                      <span class="font-semibold">Yes</span>
-                      <div class="absolute -top-3 -left-6 md:-left-12 bg-gray-300 h-20 w-[1px]"></div>
-                    </div>
-                  </td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-          <!-- Item -->
-
-        </div>
-      </div>
-    </div>
-  </section> --}}
-  <h2 class=" m-auto w-4/5 text-center mt-12 text-3xl font-bold text-gray-900">Requisitos para tramites</h2>
-
-    <div class="w-4/5 m-auto bg-white border border-gray-200 divide-y divide-gray-200 rounded-xl my-12">
-      <details class="p-6 group" open>
-        <summary class="flex items-center justify-between cursor-pointer">
-            <h5 class="text-lg font-medium text-gray-900">
-                Inscripción catastral
-            </h5>
-            <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </span>
-        </summary>
-        <div class="mt-4 leading-relaxed text-gray-700">
-            <ol class="list-decimal pl-6">
-                <li>Copia de la cédula de identidad</li>
-                <li>Copia del título o documento de propiedad</li>
-                <li>Una carpeta manila tamaño oficio con gancho</li>
-            </ol>
-        </div>
-    </details>
-    
-  
-      {{-- <details class="p-6 group">
-          <summary class="flex items-center justify-between cursor-pointer">
-              <h5 class="text-lg font-medium text-gray-900">
-....... 
-              </h5>
-  
-              <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-  
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-              </span>
-          </summary> --}}
-  
-          {{-- <p class="mt-4 leading-relaxed text-gray-700">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis
-              molestias culpa in, recusandae laboriosam neque aliquid libero nesciunt
-              voluptate dicta quo officiis explicabo consequuntur distinctio corporis
-              earum similique!
-          </p>
-      </details>
-  
-      <details class="p-6 group">
-          <summary class="flex items-center justify-between cursor-pointer">
-              <h5 class="text-lg font-medium text-gray-900">
-                ......
-              </h5>
-  
-              <span class="relative flex-shrink-0 ml-1.5 w-5 h-5">
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-  
-                  <svg xmlns="http://www.w3.org/2000/svg"
-                      class="absolute inset-0 w-5 h-5 opacity-0 group-open:opacity-100" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-              </span>
-          </summary>
-  
-          <p class="mt-4 leading-relaxed text-gray-700">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab hic veritatis
-              molestias culpa in, recusandae laboriosam neque aliquid libero nesciunt
-              voluptate dicta quo officiis explicabo consequuntur distinctio corporis
-              earum similique!
-          </p>
-      </details> --}}
-  </div>
-
 
 
 
@@ -326,10 +176,10 @@
     <!--Footer content-->
     <!--Start footer copyright-->
     <div class="footer-dark">
-      <div class="container py-4 border-t border-gray-200 border-opacity-10">
+      <div class="container mx-auto py-4 border-t border-gray-200 border-opacity-10">
         <div class="row">
           <div class="col-12 col-md text-center">
-            <p class="d-block my-3">Copyright © Catastro Municipio Libertador | Todos los derechos Reservados.</p>
+            <p class="my-3">Copyright © Catastro Municipio Libertador | Todos los derechos Reservados.</p>
           </div>
         </div>
       </div>

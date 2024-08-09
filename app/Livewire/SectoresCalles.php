@@ -31,6 +31,7 @@ class SectoresCalles extends ModalComponent
              ]);
              Auditoria::create([
                 'user_id' => Auth::user()->id,
+                'accion' => 'REGISTRO',
                 'descripcion' => 'Registró calle: '.$this->nombre,
                 'fecha' => Carbon::now(),
             ]);
@@ -40,6 +41,7 @@ class SectoresCalles extends ModalComponent
              ]);
              Auditoria::create([
                 'user_id' => Auth::user()->id,
+                'accion' => 'REGISTRO',
                 'descripcion' => 'Registró Sector: '.$this->nombre,
                 'fecha' => Carbon::now(),
             ]);

@@ -27,6 +27,6 @@
     :max="now()->addDays(1)->hours(12)->minutes(30)"
     />      
     <x-button class="max-h-10 max-w-20" href="{{ route('calculos.report', ['desde' => $desde, 'hasta' => $hasta]) }}" target="_blank" label="generar reporte"
-        teal />
+        info />
 
 </div>

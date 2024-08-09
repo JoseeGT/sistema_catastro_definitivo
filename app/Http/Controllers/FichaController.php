@@ -5,24 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Ficha;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Writer\Pdf\Dompdf;
-use Barryvdh\DomPDF\Facade\Pdf as PDF;
-use Dompdf\Dompdf as DompdfLib;
-use NcJoes\OfficeConverter\OfficeConverter;
-use Symfony\Component\Process\Process;
 use App\Models\Inmueble;
 use Carbon\Carbon;
 
 class FichaController extends Controller
-{   
+{
     public function ejemplo($id_ficha)
-    {   
+    {
         $ficha = Ficha::find($id_ficha);
-        $inmueble = Inmueble::with('direccion.calle1', 'direccion.calle2',
-         'direccion.sector', 'propietario', 'documento', 'tenenciaTerreno')
-        ->find($ficha->inmueble_id);
-        $ficha = Ficha::find($id_ficha);
-        
+        $inmueble = Inmueble::with('direccion.calle1', 'direccion.calle2', 'direccion.sector', 'propietario', 'documento', 'tenenciaTerreno')->find($ficha->inmueble_id);
+
         $codigoConcatenado = implode('-', [
             $inmueble->codigoCatastral->sec,
             $inmueble->codigoCatastral->man,
@@ -32,19 +24,14 @@ class FichaController extends Controller
             $inmueble->codigoCatastral->uni
         ]);
 
-        // dd($inmueble);
-        // Ruta del archivo de entrada y salida
+        // Ruta del archivo de entrada
         $filePath = public_path('fichas/formato_ficha_catastral.xlsx');
-        $editedFilePath = public_path('fichas/'.'ficha '.$codigoConcatenado.'.xlsx');
-
-        $outputPdfPath = public_path('fichas/formato1.pdf');
-        $bin = 'C:\Program Files\LibreOffice\program\scalc.exe';
 
         // Verificar si el archivo existe
         if (!file_exists($filePath)) {
             return response()->json(['error' => 'El archivo no existe.'], 404);
         }
-        
+
         // Cargar el archivo existente
         $spreadsheet = IOFactory::load($filePath);
         $worksheet = $spreadsheet->getActiveSheet();
@@ -76,6 +63,7 @@ class FichaController extends Controller
                 $worksheet->getCell($cell)->setValue($valueArray[$i]);
             }
         }
+
         $fechaFormateada = Carbon::createFromTimestamp($ficha->fecha)->format('d/M/Y');
 
         $worksheet->getCell('S7')->setValue(date('d-m-Y'));
@@ -107,18 +95,30 @@ class FichaController extends Controller
         $worksheet->getCell('H41')->setValue($inmueble->documento->observaciones);
 
         // Guardar el archivo editado en formato XLSX
+        $editedFilePath = public_path('fichas/' . 'ficha_' . $codigoConcatenado . '.xlsx');
         $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
         $writer->save($editedFilePath);
 
-        $filename = 'ficha ' . $codigoConcatenado . '.xlsx';
+        // Convertir el archivo Excel a PDF usando LibreOffice
+        $outputPdfPath = public_path('fichas/' . 'ficha_' . $codigoConcatenado . '.pdf');
 
+        // Ruta del ejecutable de LibreOffice
+        $libreOfficePath = 'C:\Program Files\LibreOffice\program\soffice.exe'; // Cambia esto según la ruta en tu sistema
 
-        $excelficha = file_get_contents($editedFilePath);
+        // Comando para convertir el archivo
+        $command = '"' . $libreOfficePath . '" --headless --convert-to pdf "' . $editedFilePath . '" --outdir "' . public_path('fichas') . '"';
+
+        // Ejecutar el comando
+        exec($command, $output, $return_var);
+
+        if ($return_var !== 0) {
+            return response()->json(['error' => 'Error al convertir el archivo a PDF.'], 500);
+        }
+
+        // Eliminar el archivo Excel temporal
         unlink($editedFilePath);
 
-        return response($excelficha, 200, [
-            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-            'Content-Disposition' => 'inline; filename="' . $filename . '"'
-        ]);
+        // Enviar el PDF al navegador
+        return response()->file($outputPdfPath)->deleteFileAfterSend(true);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Blade;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -68,6 +69,7 @@ final class UserTable extends PowerGridComponent
         return [
             Column::make('Id', 'id'),
             Column::make('Nombre', 'name')
+            ->headerAttribute('!text-center')
                 ->sortable()
                 ->searchable(),
 
@@ -90,10 +92,11 @@ final class UserTable extends PowerGridComponent
             Column::make('Telefono', 'telefono')
                 ->sortable()
                 ->searchable(),
-            Column::make('estado', 'estado'),
+            Column::make('Estatus', 'estado'),
             column::make('Creacion', 'created_at_formatted'),
 
-            Column::action('Action')
+            Column::action('Acciones')
+                
         ];
     }
 
@@ -132,23 +135,25 @@ final class UserTable extends PowerGridComponent
             Button::add('edit')
                 ->slot('Editar')
                 ->id()
-                ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->openModal('edit-usuario', ['id' => $row->id]),
+                ->render(function ($dish) {
+                    return Blade::render(<<<HTML
+                 <x-mini-button icon="home" onclick="Livewire.dispatch('openModal', { component: 'edit-usuario', arguments: {id: {{ $dish->id }}}})" />
+ 
+            HTML);
+            })
                     ];
     }
 
     
-    // public function actionRules($row): array
-    // {
-    //    return [
-    //         // Hide button edit for ID 1
-    //         Rule::button('edit')
-    //             ->when(fn($row) => $row->id === 1)
-    //             ->hide(),
-    //         Rule::row('estado')
-    //         ->when(fn($row) => $row-> === 1)
-    //         ->hide(),
-    //     ];
-    // }
+    public function actionRules($row): array
+    {
+       return [
+            // Hide button edit for ID 1
+            Rule::rows()
+                ->when(fn ($row) => $row->estado == 'INACTIVO')
+                ->setAttribute('class', 'bg-red-100 hover:bg-red-200'),
+        ];
+
+    }
     
 }

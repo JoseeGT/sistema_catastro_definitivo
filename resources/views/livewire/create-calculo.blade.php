@@ -10,7 +10,7 @@
             option-value="id"
             wire:model.live="inmueble_id"
             />
-        <x-button class="h-10" wire:click="loadInmuebleData('{{ $inmueble_id }}')">Cargar Inmueble</x-button>
+        <x-boton class="h-10" wire:click="loadInmuebleData('{{ $inmueble_id }}')">Cargar Inmueble</x-boton>
 
         </div>    
         <form wire:submit.prevent="submit">
@@ -73,19 +73,16 @@
             </div>
             <h2 class="my-5">Servicios y/o tasas</h2>
             <div class=" mb-10 grid grid-cols-2 gap-7 border-gray-300 border rounded-lg p-3">
-                <x-toggle id="acueducto" name="toggle" left-label="Acueducto"  sm wire:model.live="acueducto"/>
-                <x-toggle id="cloaca" name="toggle" left-label="Cloaca"  sm wire:model.live="cloaca"/>
-                <x-toggle id="ficha" name="toggle" left-label="Ficha_Catastral"  sm wire:model.live="ficha_catastral"/>
-                <x-toggle id="art_91" name="toggle" left-label="Art. 91"  sm wire:model.live="art_91"/>
-                <x-toggle id="solvencia" name="toggle" left-label="Solvencia"  sm wire:model.live="solvencia"/>
-                <x-toggle id="inspeccion" name="toggle" left-label="Inspeccion"  sm wire:model.live="inspeccion"/>
-                <x-toggle id="plano_mensura" name="toggle" left-label="Plano Mensura"  sm wire:model.live="plano_mensura"/>
+                <x-toggle id="acueducto" name="toggle" label="Acueducto"  sm wire:model.live="acueducto"/>
+                <x-toggle id="cloaca" name="toggle" label="Cloaca"  sm wire:model.live="cloaca"/>
+                <x-toggle id="ficha" name="toggle" label="Ficha_Catastral"  sm wire:model.live="ficha_catastral"/>
+                <x-toggle id="art_91" name="toggle" label="Art. 91"  sm wire:model.live="art_91"/>
+                <x-toggle id="solvencia" name="toggle" label="Solvencia"  sm wire:model.live="solvencia"/>
+                <x-toggle id="inspeccion" name="toggle" label="Inspeccion"  sm wire:model.live="inspeccion"/>
+                <x-toggle id="plano_mensura" name="toggle" label="Plano Mensura"  sm wire:model.live="plano_mensura"/>
             </div>
 
-{{--             <div>
-                <h2>Sub total</h2>
-                <div class="my-[7px] rounded-[4px] border border-[#E7EAEE] p-3 text-[#191D23]">{{ $acueducto }}</div>
-            </div> --}}
+
             <div class="grid grid-cols-3 gap-2 w-full align-items-center">
                 <div>
                     <h2>Impuesto de Construcción</h2>
@@ -129,13 +126,10 @@
 
 
 
-            <div class="flex justify-between gap-5">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <div class="flex gap-3">
-                    <x-button label="Calcular" wire:click="calcular"/>
-                    <x-button label="Crear" type="submit"/>
-                </div>
-
+            <div class="flex justify-end gap-3">
+                    <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                    <x-boton label="Calcular" wire:click="calcular" onclick="event.preventDefault();">Calcular</x-boton>
+                    <x-boton label="generar" type="submit">Generar</x-boton>
             </div>
         </form>
         

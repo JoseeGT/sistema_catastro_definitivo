@@ -25,6 +25,7 @@ class LogSuccessfulLogin
     {
         Auditoria::create([
             'user_id' => $event->user->id,
+            'accion' => 'INICIO',
             'descripcion' => 'Inicio de sesión',
             'fecha' => Carbon::now(),
         ]);

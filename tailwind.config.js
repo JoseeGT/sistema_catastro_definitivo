@@ -3,7 +3,7 @@ import forms from '@tailwindcss/forms';
 const colors = require('tailwindcss/colors')
 /** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: 'false',
+    darkMode: 'clase',
     presets: [
 		require("./vendor/wireui/wireui/tailwind.config.js"),
 		 require("./vendor/power-components/livewire-powergrid/tailwind.config.js"),
@@ -19,8 +19,9 @@ export default {
         "./vendor/wireui/wireui/src/Components/**/*.php",
         './vendor/wire-elements/modal/**/*.blade.php',
         './vendor/wire-elements/modal/src/ModalComponent.php',
-
-        // "./vendor/wire-elements/modal/src/ModalComponent.php",
+        './app/Livewire/**/*Table.php',
+        './vendor/power-components/livewire-powergrid/resources/views/**/*.php',
+        './vendor/power-components/livewire-powergrid/src/Themes/Tailwind.php'
 
         
     ],
@@ -37,7 +38,10 @@ export default {
                 positive: colors.emerald,
                 negative: colors.red,
                 warning: colors.amber,
-                info: colors.blue
+                info: colors.blue,
+                "pg-primary": colors.gray, 
+
+
             },
         },
     },

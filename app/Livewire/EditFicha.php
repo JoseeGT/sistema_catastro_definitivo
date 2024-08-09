@@ -217,6 +217,7 @@ class EditFicha extends ModalComponent
         );      
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'EDITAR',
             'descripcion' => 'Editó ficha ' .$this->sec." ".$this->man." ".$this->par." ".$this->sbp." ".$this->niv." ".$this->uni,
             'fecha' => Carbon::now(),
         ]);

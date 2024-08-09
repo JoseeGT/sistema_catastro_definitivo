@@ -66,6 +66,7 @@ class Unificar extends ModalComponent
         ]);
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'UNIFICAR',
             'descripcion' => 'Unificó Inmuebles: '.json_encode($this->inmuebles_ids),
             'fecha' => Carbon::now(),
         ]);

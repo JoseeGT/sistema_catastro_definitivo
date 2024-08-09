@@ -4,8 +4,8 @@
             Usuarios
         </h2>
     </x-slot>
-    <x-button onclick="Livewire.dispatch('openModal', { component: 'create-usuario' })">crear usuario</x-button>
-
+    <x-boton onclick="Livewire.dispatch('openModal', { component: 'create-usuario' })">Registrar usuario</x-boton>
+    
 
     
     <div class="bg-white p-2 rounded-lg mt-10">

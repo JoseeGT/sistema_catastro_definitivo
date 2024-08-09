@@ -63,10 +63,13 @@ class Dividir extends ModalComponent
         }
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'DIVISION',
             'descripcion' => 'Dividió Inmueble' .$inmueble->codigoCatastral->sec.'-'.$inmueble->codigoCatastral->man.'-'.$inmueble->codigoCatastral->par,
             'fecha' => Carbon::now(),
         ]);
         $this->reset();
+        $this->dispatch('pg:eventRefresh-DivisionesTable');
+
     }
 
     public function render()

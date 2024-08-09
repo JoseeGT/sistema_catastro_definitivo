@@ -45,7 +45,7 @@
                 <x-input label="Numero Civico" placeholder="Ingrese el numero" wire:model="numero_civico" ></x-input>
                 <x-input label="Nota de la direccion" placeholder="Nota" wire:model="nota"></x-input>
             </div>
-            <div class="grid grid-cols-2 gap-2 my-7">   
+            <div class="grid grid-cols-2 gap-2 my-5">   
                 <x-input label="Area Terreno" placeholder="Mts2" wire:model="area_terreno" ></x-input>
                 {{-- <x-input label="Area Terreno SD" placeholder="Mts2" wire:model="area_terreno_sd" ></x-input> --}}
                 <x-input label="Area Construccion" placeholder="Mts2" wire:model="area_construccion" ></x-input>
@@ -74,14 +74,14 @@
             :options="['ACTIVO', 'INACTIVO']"
             wire:model="estado"
         />
-        @if ($inmueble->plano_path != null)
-            <x-button info class="mb-10"><a href="{{Storage::url($inmueble->plano_path)}}" target="_blank">Ver plano del Inmueble</a>
-            </x-button>
-        @endif
+      
            
-            <div class="flex items-center ga justify-between">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-button label="Actualizar inmueble" type="submit"/>
+            <div class="flex gap-3 justify-end items-end">
+                <x-button type="button" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                @if ($inmueble->plano_path != null)
+                <x-boton ><a href="{{($inmueble->plano_path)}}" target="_blank">Ver plano del Inmueble</a></x-boton>
+                    @endif
+                <x-boton label="Actualizar inmueble" type="submit">Actualizar inmueble</x-boton>
             </div>
         </form>
         

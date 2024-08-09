@@ -1,8 +1,8 @@
 <div class="pt-10 flex gap-10 items-center justify-center">
-    <button class=" w-full max-w-xs h-52 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex flex-col justify-center items-center gap-3" wire:click="backupDatabase">
+    <button class=" w-full max-w-xs h-52 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex flex-col justify-center items-center gap-3" wire:click="backupDatabase">
         <x-icon name="arrow-down-on-square" class="w-28 h-28" />
         Exportar Base de datos</button>
-    <button class=" w-full max-w-xs h-52 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex flex-col justify-center items-center gap-3" label="Restaurar" x-on:click="$openModal('cardModal')" primary>
+    <button class=" w-full max-w-xs h-52 bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded flex flex-col justify-center items-center gap-3" label="Restaurar" x-on:click="$openModal('cardModal')" primary>
         <x-icon name="arrow-up-on-square" class="w-28 h-28" />
 
         Restaurar Base de datos</button>
@@ -20,17 +20,17 @@
             :multiple="false"/> --}}
             
             <x-input wire:model.live="backupFile" type="file" label="Importar" accept=".sql"></x-input>
-            <div class="flex justify-end gap-5">
-                <x-button flat negative label="Cancelar" x-on:click="close" />
+            <div class="flex justify-end gap-3">
+                <x-button negative label="Cancelar" x-on:click="close" />
 
-                <x-button primary label="Restaurar" wire:click="restoreDatabase" x-on:click="$closeModal('cardModal')"/>
+                <x-boton primary label="Restaurar" wire:click="restoreDatabase" x-on:click="$closeModal('cardModal')">Restaurar</x-boton>
             </div>
 
     </form>
         
 
     </div>
- 
+
     
 
 

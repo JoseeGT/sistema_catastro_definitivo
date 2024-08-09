@@ -14,7 +14,8 @@
             />
 
             <div class="flex justify-end gap-5">
-                <x-button label="Unificar" type="submit"/>
+                <x-boton label="dividir" type="submit">Unificar</x-boton>
+
             </div>
         </form>
     </x-card>

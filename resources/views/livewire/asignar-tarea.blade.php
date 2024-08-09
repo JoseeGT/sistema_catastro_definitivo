@@ -25,9 +25,9 @@
         />          
 
 
-            <div class="flex justify-between gap-5">
+            <div class="flex justify-end gap-5">
                 {{-- <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/> --}}
-                <x-button label="Crear tarea" type="submit"/>
+                <x-boton label="Crear tarea" type="submit">Crear tarea</x-boton>
             </div>
 
         </form>

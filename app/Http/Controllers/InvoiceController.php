@@ -10,13 +10,36 @@ class InvoiceController extends Controller
 {
     public function generateInvoice(Request $request)
     {   
-        $data= json_decode($request->input('data'), true);
-        // Create PDF object
+  // Decodificar el JSON de la solicitud
+  $data = json_decode($request->input('data'), true);
 
-        $pdf = new Fpdf('P', 'mm', array(80, 150)); // 80mm width, 150mm height
-        $pdf->AddPage();
+  // Verificar que el JSON se decodificó correctamente y que es un array
+  if (json_last_error() !== JSON_ERROR_NONE) {
+      throw new \Exception('Error al decodificar el JSON: ' . json_last_error_msg());
+  }
+
+  // Verificar que el elemento tenga la clave 'id'
+  if (!isset($data['id'])) {
+      throw new \Exception('El elemento no contiene la clave "id".');
+  }
+
+  // Obtener el año actual en formato YY
+  $year = Carbon::now()->format('y');
+
+  // Formatear el ID con ceros a la izquierda hasta 4 dígitos
+  $id = str_pad($data['id'], 4, '0', STR_PAD_LEFT);
+
+  // Agregar la columna 'ref'
+  $data['ref'] = $year . '-' . $id;
+
+  // Crear objeto PDF
+  $pdf = new Fpdf('P', 'mm', array(80, 150)); // 80mm width, 150mm height
+  $pdf->AddPage();
+
+  // Debugging: mostrar el contenido de $data
+//   dd($data);
         // dd($data);
-
+        
         $pageWidth = 80;
         $pageHeight = 150;
         $margin = 5;
@@ -40,7 +63,7 @@ class InvoiceController extends Controller
         $pdf->Ln(3);
 
         $pdf->SetX(0);
-        $pdf->Cell(80, 6, '#'.$data["id"], 0, 1, "C");
+        $pdf->Cell(80, 6, '#'.$data["ref"], 0, 1, "C");
         $pdf->Ln(3);
         // Código Catastral , Propietario Y C.i
         $pdf->SetFont('Arial', 'B', 9);

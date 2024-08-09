@@ -20,7 +20,7 @@
                     <x-native-select wire:model="codigo_telefono"
                         label="codigo de telefono"
                         placeholder="seleccione el codigo"
-                        :options="['0414', '0416', '0424', '0426']"/>
+                        :options="['0412','0414', '0416', '0424', '0426']"/>
                 </div>
                 <x-phone class=" basis-8/12 my-2"
                         id="multiple-mask"
@@ -35,9 +35,9 @@
                     placeholder="selecciona el estado del propietario"
                     :options="['ACTIVO', 'INACTIVO']"/>
             </div>
-            <div class="flex items-center justify-between">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-button label="Actualizar Propietario" type="submit"/>
+            <div class="flex items-center justify-end gap-3">
+                <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-boton label="Actualizar Propietario" type="submit">Actualizar Propietario</x-boton>
             </div>
 
         </form>       

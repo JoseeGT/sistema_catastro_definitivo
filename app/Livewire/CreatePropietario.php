@@ -19,7 +19,7 @@ class CreatePropietario extends ModalComponent
     public $nombre;
     #[Validate('required|in:V-,E-,J-,P-,G-')] 
     public $tipo_documento;
-    #[Validate('required|numeric')] 
+    #[Validate('required|numeric | digits_between:7,10')] 
     public $documento;
     public $codigo_telefono;
     public $telefono;
@@ -52,6 +52,7 @@ class CreatePropietario extends ModalComponent
         $this->closeModal();
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'REGISTRO',
             'descripcion' => 'Registró propietario: '.$this->nombre,
             'fecha' => Carbon::now(),
         ]);

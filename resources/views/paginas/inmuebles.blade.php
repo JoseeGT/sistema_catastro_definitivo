@@ -7,7 +7,7 @@
     
 @can('crear inmuebles')
     <div class="flex gap-20 w-full items-end  ">
-        <x-button class="max-h-10"  onclick="Livewire.dispatch('openModal', { component: 'create-inmueble' })">Crear Inmueble</x-button>
+        <x-boton class="max-h-10"  onclick="Livewire.dispatch('openModal', { component: 'create-inmueble' })">Registrar Inmueble</x-boton>
         <livewire:inmuebles-report/>
     </div>
 @endcan

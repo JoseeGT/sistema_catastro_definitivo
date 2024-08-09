@@ -55,7 +55,7 @@ class CalculosReportController extends Controller
                 $this->Ln(5);
                 $this->SetX(77);
                 $this->Cell(55, 7, 'Reporte de Calculos', "B", 1, 'C');
-                $this->Ln(10);
+                $this->Ln(15);
             }
             // Sobrescribe el método Footer si lo deseas
             function Footer()
@@ -178,19 +178,19 @@ class CalculosReportController extends Controller
        // Encabezado de la tabla
 
        $pdf->SetFont('Arial', '', 10);
-       $pdf->Cell(60, 10, 'Filtrado desde: '. $desde .'Filtrado hasta: '. $hasta ,0,1);
+    //    $pdf->Cell(60, 10, 'Filtrado desde: '. $desde .'Filtrado hasta: '. $hasta ,0,1);
        $pdf->SetFont('Arial', 'B', 10);
        $pdf->Cell(8, 7,utf8_decode('N°'), 1, 0, 'C');
        $pdf->Cell(44, 7, 'Codigo Catastral', 1, 0, 'C');
-       $pdf->Cell(68, 7, 'Direccion', 1, 0, 'C');
-       $pdf->Cell(53, 7, 'Propietario', 1, 0, 'C');
-       $pdf->Cell(15, 7, 'total', 1, 0, 'C');
+       $pdf->Cell(65, 7, 'Direccion', 1, 0, 'C');
+       $pdf->Cell(50, 7, 'Propietario', 1, 0, 'C');
+       $pdf->Cell(21, 7, 'total', 1, 0, 'C');
        $pdf->Ln();
 
 
        // Contenido de la tabla
        $pdf->SetFont('Arial', '', 10);
-       $pdf->SetWidths(array(8, 44, 68, 53, 15));
+       $pdf->SetWidths(array(8, 44, 65, 50, 21));
 
        foreach ($activos as $i => $calculos) {
          $i++;
@@ -209,7 +209,7 @@ class CalculosReportController extends Controller
                         $calculos->inmueble->direccion->nota . ', ' .
                         $calculos->inmueble->direccion->sector->nombre;
 
-                        $pdf->Row(array($i, $codigoCatastral,utf8_decode($direccion), utf8_decode($calculos->inmueble->propietario->nombre)." ".$calculos->inmueble->propietario->tipo_documento .$calculos->inmueble->propietario->documento,$calculos->total));
+                        $pdf->Row(array($i, $codigoCatastral,utf8_decode($direccion), utf8_decode($calculos->inmueble->propietario->nombre)." ".$calculos->inmueble->propietario->tipo_documento .$calculos->inmueble->propietario->documento,$calculos->total." MMV"));
 
            // Agregar número de línea
         //    $pdf->Cell(10, 7, $i, 1, 0, 'C');

@@ -74,6 +74,7 @@ class EditUsuario extends ModalComponent
         $this->closeModal();
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'EDITAR',
             'descripcion' => 'Editó Usuario: '.$this->nombre,
             'fecha' => Carbon::now(),
         ]);

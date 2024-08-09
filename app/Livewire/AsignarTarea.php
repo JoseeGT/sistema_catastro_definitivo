@@ -41,12 +41,13 @@ class AsignarTarea extends ModalComponent
 
 
         ]);
-        $this->dispatch('pg:eventRefresh-TareasTable');
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'GENERAR',
             'descripcion' => 'asignó tarea a ' . $this->usuario->name,
             'fecha' => Carbon::now(),
         ]);
+        $this->dispatch('pg:eventRefresh-TareasTable');
         $this->reset();
 
     }

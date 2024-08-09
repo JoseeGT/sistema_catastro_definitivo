@@ -64,6 +64,7 @@ class CreateUsuario extends ModalComponent
         // Reiniciar los campos del formulario
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'REGISTRO',
             'descripcion' => 'Creó usuario '.$this->nombre,
             'fecha' => Carbon::now(),
         ]);

@@ -125,6 +125,7 @@ class CreateInmueble extends ModalComponent
 
         Auditoria::create([
             'user_id' => Auth::user()->id,
+            'accion' => 'REGISTRO',
             'descripcion' => 'Registro inmueble: '.$this->sec." ".$this->man." ".$this->par." ".$this->sbp." ".$this->niv." ".$this->uni,
             'fecha' => Carbon::now(),
         ]);

@@ -38,20 +38,23 @@
                 <x-input label="Area Construccion" placeholder="introduzca el area" wire:model="area_construccion" suffix="Mts2"></x-input>
             </div>
             <div class="flex-column gap-y-3 mt-5 justify-center">
-                <x-input label="Lindero Norte" placeholder="Parcela" wire:model="lindero_norte"></x-input>
-                <x-input label="Lindero Sur" placeholder="Parcela" wire:model="lindero_sur"></x-input>
-                <x-input label="Lindero Este" placeholder="Parcela" wire:model="lindero_este"></x-input>
-                <x-input label="Lindero Oeste" placeholder="Parcela" wire:model="lindero_oeste"></x-input>
+                <x-input icon="arrow-up" label="Lindero Norte" placeholder="Parcela" wire:model="lindero_norte"></x-input>
+                <x-input icon="arrow-down" label="Lindero Sur" placeholder="Parcela" wire:model="lindero_sur"></x-input>
+                <x-input icon="arrow-right" label="Lindero Este" placeholder="Parcela" wire:model="lindero_este"></x-input>
+                <x-input icon="arrow-left" label="Lindero Oeste" placeholder="Parcela" wire:model="lindero_oeste"></x-input>
             </div>
 
             <x-input type="file" class="mb-3" label="Plano" placeholder="" wire:model.live="plano"></x-input>
-            <x-button info class="mb-10"><a href="{{Storage::url($inmueble->plano_path)}}" target="_blank">Ver plano del Inmueble</a>
-            </x-button>
+            {{-- <x-boton type="button" class="mb-10"><a href="{{ $planoPreviewUrl }}" target="_blank">Ver plano del Inmueble</a>
+            </x-boton> --}}
+            @if ($planoPreviewUrl)
+            <iframe class="mb-3" src="{{ $planoPreviewUrl }}" width="100%" height="600px"></iframe>
+            @endif
 
-            <div class="flex justify-between gap-5">
-                <x-button flat negative wire:click="$dispatch('closeModal')" label="cancelar"/>
+            <div class="flex justify-end gap-3">
+                <x-button negative wire:click="$dispatch('closeModal')" label="cancelar"/>
                 <div>
-                    <x-button label="completar inspeccion" type="save"/>
+                    <x-boton label="completar inspeccion" type="save">completar inspeccion</x-boton>
                 </div>
             </div>
         </form>

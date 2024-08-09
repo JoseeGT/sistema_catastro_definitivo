@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'CAMLI') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,13 +16,20 @@
     </head>
     <body class="font-sans text-gray-900 antialiased">
         <!-- component -->
-<div class="bg-gray-200 flex justify-center items-center h-screen">
+<div class="bg-gray-200 flex {{-- justify-center items-center --}} h-screen">
     <!-- Left: Image -->
 <div class="w-2/3 h-screen hidden lg:block">
   <img src="{{ asset('logo/planomun.png') }}" alt="Placeholder Image" class="object-cover w-full h-full brightness-75">
 </div>
 <!-- Right: Login Form -->
 <div class="lg:p-10 md:p-52 sm:20 p-8 w-full lg:w-1/3">
+    <div class="flex justify-center my-10">
+        <x-application-logo class="block h-32 w-auto fill-black  text-gray-800" />
+
+    </div>
+<div>
+
+</div>
     <h1 class="text-4xl font-semibold mb-4">CAMLI</h1>
     <h2 class="text 2xl font-semibold mb-4">Inicio de Sesión</h1>
     

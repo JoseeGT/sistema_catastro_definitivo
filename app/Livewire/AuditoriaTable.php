@@ -39,12 +39,13 @@ final class AuditoriaTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return Auditoria::query()
-            ->join('users',function($users){
-                $users->on('auditoria.user_id', '=', 'users.id');
-            })
-            ->select('auditoria.*', 'users.name as user_name')
-            ->orderBy('auditoria.id', 'desc')
-            ;
+        ->join('users', function($join) {
+            $join->on('auditoria.user_id', '=', 'users.id');
+        })
+        ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+        ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+        ->select('auditoria.*', 'users.name as user_name', 'roles.name as role_name')
+        ->orderBy('auditoria.id', 'desc');
     }
 
     public function relationSearch(): array
@@ -60,7 +61,8 @@ final class AuditoriaTable extends PowerGridComponent
         return PowerGrid::fields()
             ->add('id')
             ->add('user_name')
-
+            ->add('role_name') // Añadir el campo para roles
+            ->add('accion')
             ->add('descripcion')
             ->add('fecha')
             ->add('fecha_formateada', function ($auditoria) {
@@ -73,6 +75,8 @@ final class AuditoriaTable extends PowerGridComponent
         return [
             Column::make('Id', 'id'),
             Column::make('Usuario', 'user_name'),
+            Column::make('Rol', 'role_name'), 
+            Column::make('Accion', 'accion'),
             Column::make('Descripcion', 'descripcion')
                 ->sortable()
                 ->searchable(),
@@ -97,12 +101,24 @@ final class AuditoriaTable extends PowerGridComponent
                 ->dataSource(User::all())
                 ->optionLabel('name')
                 ->optionValue('id'),
+                Filter::select('accion', 'accion')
+
+                ->dataSource([
+                    ['id' => 'REGISTRO', 'name' => 'REGISTRO'],
+                    ['id' => 'EDITAR', 'name' => 'EDITAR'],
+                    ['id' => 'GENERAR', 'name' => 'GENERAR'],
+                    ['id' => 'INSPECCION', 'name' => 'INSPECCION'],
+                    ['id' => 'INICIO', 'name' => 'INICIO'],
+
+                ])
+                ->optionLabel('name')
+                ->optionValue('id'),
                 Filter::datepicker('fecha_formateada', 'auditoria.fecha')    
                 ->params([
                     'timezone' => 'America/Caracas',
                 ]),
-                Filter::inputText('descripcion','descripcion')
-                ->operators(['contains']),
+                // Filter::inputText('descripcion','descripcion')
+                // ->operators(['contains']),
         ];
     }
 

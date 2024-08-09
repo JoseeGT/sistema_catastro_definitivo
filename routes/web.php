@@ -13,6 +13,10 @@ use App\Http\Controllers\PropietariosReportController;
 use App\Http\Controllers\CalculosReportController;
 
 Route::view('/', 'welcome');
+Route::view('/acerca', 'historia');
+Route::view('/archivos', 'descargar');
+Route::view('/preguntas', 'preguntas');
+Route::view('/requisitos', 'requisitos');
 
 Route::middleware(['auth','estado'])->group(function () {
     // Route::view('Inicio', 'paginas.inicio')->name('dashboard');
@@ -39,7 +43,10 @@ Route::middleware(['auth','estado'])->group(function () {
     Route::get('/ficha/imprimir/{id}', [FichaController::class, 'ejemplo'])->name('ficha.imprimir');
     
 
-
+    Route::get('/livewire-config', function () {
+        $config = config('livewire.temporary_file_upload');
+        return response()->json($config);
+    });
     Route::get('/propietarioreporte', [PropietariosReportController::class, 'generateInvoice'])->name('propietarios.report');
     Route::get('/inmueblereporte', [InmueblesReportController::class, 'generateInvoice'])->name('inmuebles.report');
     Route::get('/calculoreporte', [CalculosReportController::class, 'generateInvoice'])->name('calculos.report');
