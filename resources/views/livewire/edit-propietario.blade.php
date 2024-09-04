@@ -36,8 +36,8 @@
                     :options="['ACTIVO', 'INACTIVO']"/>
             </div>
             <div class="flex items-center justify-end gap-3">
-                <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-boton label="Actualizar Propietario" type="submit">Actualizar Propietario</x-boton>
+                <x-button class="min-h-10 min-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button class="min-h-10 min-w-28 text-center" label="Actualizar" type="submit"/>
             </div>
 
         </form>       

@@ -13,8 +13,8 @@
                 :min="now()"
                 />     
                 <div class="flex items-center justify-end gap-3">
-                    <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                    <x-boton label="generar inspección" type="GenerarInspeccion">Generar inspección</x-boton>
+                    <x-button class="min-h-12 min-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                    <x-button class="max-h-12 max-w-28 text-center" label="Generar inspección" type="GenerarInspeccion"/>
                 </div>
             </form>  
         </x-card>

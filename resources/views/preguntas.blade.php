@@ -27,59 +27,74 @@
 <body class="text-gray-700 pt-9 sm:pt-10">
   <!-- ========== { HEADER }==========  -->
   <header class="fixed top-0 left-0 right-0 z-50">
-     <nav class="bg-gray-800">
-       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-          <div class="flex justify-between">
+    
+    <nav class="bg-gray-800">
+      <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+         <div class="flex justify-between">
 
-          <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">        <x-application-logo class="block h-20 p-3 w-auto fill-white" />
-            Catastro | Municipio Libertador</div>
-            
-            <div class="flex flex-row">
-              <!-- nav menu -->
-              <ul class="navbar hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
+         <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center"><x-application-logo class="block h-20 p-3 w-auto fill-white" />
+           Catastro | Municipio Libertador</div>
+           
+           <div class="flex flex-row">
+             <!-- nav menu -->
+             <ul class="navbar gap-2 hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
 
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Inicio</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/acerca">Historia</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/preguntas">Preguntas Frecuentes</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/archivos">Descargar Archivos</a>
-                </li>
+               <li class="relative border-l border-gray-800 ">
+                 <a class="block py-3 px-3  hover:border-b-2 " href="/">Inicio</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/acerca">Historia</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3  hover:border-b-2" href="/preguntas">Preguntas Frecuentes</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/archivos">Descargar Archivos</a>
+               </li>
 
-                <li class="relative border-l border-gray-900 bg-gray-700 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
-                </li>
-              </ul>
-
-
-              <!-- search form & mobile nav -->
-              <div class="flex flex-row items-center text-gray-300">
+               <li class="relative bg-gray-700 hover:bg-gray-900">
+                 <a class="block py-3 px-3" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
+               </li>
+             </ul>
 
 
-                <div class="relative hover:bg-gray-800 block lg:hidden">
-                  <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
-                    <span class="sr-only">Mobile menu</span>
-                    <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg> Menu
-                  </button>
-                </div>
-              </div>
-            </div>
+             <!-- search form & mobile nav -->
+             <div class="flex flex-row items-center text-gray-300">
+
+
+               <div class="relative hover:bg-gray-800 block lg:hidden">
+                 <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
+                   <span class="sr-only">Mobile menu</span>
+                   <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                   </svg> Menu
+                 </button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+    </nav>
+ </header><!-- end header -->
+
+ <header class="h-4/6">
+  <div class="w-full h-80  bg-center bg-cover"
+  style="background-image: url('{{ asset('portal/hero-image.jpeg') }}');">
+    <div class="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-60 py-12">
+      <div class="text-center">
+        <div class="container px-4 mx-auto">
+          <div class="max-w-4xl mx-auto text-center">
+            {{-- <span class="text-gray-200 font-semibold uppercase tracking-widest">Catastro</span> --}}
+            <h2 class="mt-8 mb-6 text-4xl lg:text-5xl font-bold text-gray-100">Preguntas Frecuentes</h2>
           </div>
         </div>
-     </nav>
-  </header><!-- end header -->
-
+      </div>
+    </div>
+  </div>
+</header>
   <div class="py-24 px-8 max-w-5xl mx-auto flex flex-col md:flex-row gap-12">
     <div class="flex flex-col text-left basis-1/2">
-        <p class="sm:text-4xl text-3xl font-extrabold text-base-content">Preguntas Frecuentes</p>
-        <img  class="mt-4" src="{{ asset('portal/ficha_ejemplo.png') }}" alt="Ficha catastral">
+        <img  class="" src="{{ asset('portal/ficha_ejemplo.png') }}" alt="Ficha catastral">
     </div>
     <ul class="basis-1/2">
         <li>
@@ -96,21 +111,7 @@
                 </div>
             </div>
         </li>
-        <li>
-            <button class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10" aria-expanded="false" onclick="toggleFAQ(this)">
-                <span class="flex-1 text-base-content">¿Cómo puedo consultar la información catastral de un inmueble?</span>
-                <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="7" width="16" height="2" rx="1" class="transform origin-center transition duration-200 ease-out false"></rect>
-                    <rect y="7" width="16" height="2" rx="1" class="transform origin-center rotate-90 transition duration-200 ease-out false"></rect>
-                </svg>
-            </button>
-            <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden" style="transition: max-height 0.3s ease-in-out 0s;">
-                <div class="pb-5 leading-relaxed">
-                    <div class="space-y-2 leading-relaxed">A través de consultas presenciales en las oficinas correspondientes.</div>
-                </div>
-            </div>
-        </li>
-        <li>
+
           <button class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10" aria-expanded="false" onclick="toggleFAQ(this)">
               <span class="flex-1 text-base-content">¿Cómo puedo saber el codigo catastral de mi inmueble?</span>
               <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">

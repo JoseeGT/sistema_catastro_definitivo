@@ -27,56 +27,55 @@
 <body class="text-gray-700 pt-9 sm:pt-10">
   <!-- ========== { HEADER }==========  -->
   <header class="fixed top-0 left-0 right-0 z-50">
-     <nav class="bg-gray-800">
-       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-          <div class="flex justify-between">
+    
+    <nav class="bg-gray-800">
+      <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+         <div class="flex justify-between">
 
-          <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">        <x-application-logo class="block h-20 p-3 w-auto fill-white" />
-            Catastro | Municipio Libertador</div>
-            
-            <div class="flex flex-row">
-              <!-- nav menu -->
-              <ul class="navbar hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
+         <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center"><x-application-logo class="block h-20 p-3 w-auto fill-white" />
+           Catastro | Municipio Libertador</div>
+           
+           <div class="flex flex-row">
+             <!-- nav menu -->
+             <ul class="navbar gap-2 hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
 
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Inicio</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/acerca">Acerca</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/preguntas">Preguntas Frecuentes</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/archivos">Descargar Archivos</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/requisitos">Requisitos para Tramites</a>
-                </li>
-                <li class="relative border-l border-gray-900 bg-gray-700 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
-                </li>
-              </ul>
+               <li class="relative border-l border-gray-800 ">
+                 <a class="block py-3 px-3  hover:border-b-2 " href="/">Inicio</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/acerca">Historia</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3  hover:border-b-2" href="/preguntas">Preguntas Frecuentes</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/archivos">Descargar Archivos</a>
+               </li>
 
-
-              <!-- search form & mobile nav -->
-              <div class="flex flex-row items-center text-gray-300">
+               <li class="relative bg-gray-700 hover:bg-gray-900">
+                 <a class="block py-3 px-3" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
+               </li>
+             </ul>
 
 
-                <div class="relative hover:bg-gray-800 block lg:hidden">
-                  <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
-                    <span class="sr-only">Mobile menu</span>
-                    <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg> Menu
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-     </nav>
-  </header><!-- end header -->
+             <!-- search form & mobile nav -->
+             <div class="flex flex-row items-center text-gray-300">
+
+
+               <div class="relative hover:bg-gray-800 block lg:hidden">
+                 <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
+                   <span class="sr-only">Mobile menu</span>
+                   <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                   </svg> Menu
+                 </button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+    </nav>
+ </header><!-- end header -->- end header -->
 
   <div class="bg-gray-100 dark:bg-gray-800 py-8 mt-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

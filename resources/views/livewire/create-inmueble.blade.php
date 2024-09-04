@@ -1,6 +1,8 @@
 <div>
     <x-card class=" max-w-2xl " shadow="xl" title="Registrar inmueble">
         <form wire:submit.prevent="submit">
+            <p class="text-sm text-gray-600 dark:text-gray-300">los campos con (*) son obligatorios</p>
+
             <div class="flex gap-1 py-2">
 
                 <x-maskable label="sec*" placeholder="000" wire:model="sec" mask="###" />
@@ -13,7 +15,7 @@
             
             <div class="flex gap-2 py-2 items-end">
                 <x-select
-                    label="buscar Propietario"
+                    label="buscar Propietario*"
                     placeholder="seleccione"
                     :async-data="route('api.propietarios.index')"
                     option-label="nombre"
@@ -21,12 +23,12 @@
                     option-value="id"
                     wire:model="propietario_id"
                 />
-                <x-boton class="max-h-10" wire:click="$dispatch('openModal', { component: 'create-propietario'})">Registrar usuario</x-boton>
+                <x-button class="max-h-10 min-w-28" wire:click="$dispatch('openModal', { component: 'create-propietario'})" label="Registrar Propietario"></x-button>
    
             </div>
             <div class="flex gap-2 py-2">
                 <x-select
-                    label="buscar sectores"
+                    label="buscar sector*"
                     placeholder="seleccione"
                     :async-data="route('api.sectores.index')"
                     option-label="nombre"
@@ -34,7 +36,7 @@
                     wire:model="sector_id"
                 />
                 <x-select
-                label="buscar calles"
+                label="buscar calle*"
                 placeholder="seleccione"
                 :async-data="route('api.calles.index')"
                 option-label="nombre"
@@ -44,23 +46,23 @@
             
             </div>
             <div class="flex gap-2 py-2">
-                <x-input label="Numero Civico" placeholder="Ingrese el numero" wire:model="numero_civico" ></x-input>
+                <x-input label="Numero Civico*" placeholder="Ingrese el numero" wire:model="numero_civico" ></x-input>
                 <x-input label="Nota de la direccion" placeholder="Nota" wire:model="nota"></x-input>
             </div>
             <div class="grid grid-cols-2 gap-2 my-7">   
-                <x-input label="Area Terreno" placeholder="introduzca el area" wire:model="area_terreno"     suffix="Mts2"
+                <x-input label="Area Terreno*" placeholder="introduzca el area" wire:model="area_terreno"     suffix="Mts2"
                 ></x-input>
                 {{-- <x-input label="Area Terreno SD" placeholder="introduzca el area" wire:model="area_terreno_sd" suffix="Mts2"></x-input> --}}
-                <x-input label="Area Construccion" placeholder="introduzca el area" wire:model="area_construccion" suffix="Mts2" ></x-input>
+                <x-input label="Area Construccion*" placeholder="introduzca el area" wire:model="area_construccion" suffix="Mts2" ></x-input>
                 {{-- <x-input label="Area Construccion SD" placeholder="introduzca el area" wire:model="area_construccion_sd" suffix="Mts2"></x-input> --}}
-                <x-select label="Tenencia del terreno" wire:model="tenencia_terreno_id" placeholder="seleccione">
+                <x-select label="Tenencia del terreno*" wire:model="tenencia_terreno_id" placeholder="seleccione">
                     <x-select.option label="propio" value="1" />
                     <x-select.option label="municipal" value="2" />
                     <x-select.option label="inavi" value="3" />
                     <x-select.option label="gobernacion" value="4" />
                     <x-select.option label="intu" value="5" />
                 </x-select>
-                <x-select label="Tipo de construccion" wire:model="tipo_construccion_id" placeholder="seleccione">
+                <x-select label="Tipo de construccion*" wire:model="tipo_construccion_id" placeholder="seleccione">
                     <x-select.option label="casa" value="1" />
                     <x-select.option label="apartamento" value="2" />
                     <x-select.option label="gm vivienda" value="3" />
@@ -70,9 +72,9 @@
             </div>
      
             <div class="flex justify-end gap-3">
-                <x-button class="h-10" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button class="min-h-10 max-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
 
-                <x-boton class="h-10" label="Registrar inmueble" type="submit"> Registrar inmueble</x-boton>
+                <x-button class="h-10  max-w-28 text-center" label="Registrar inmueble" type="submit"/>
             </div>
         </form>
         

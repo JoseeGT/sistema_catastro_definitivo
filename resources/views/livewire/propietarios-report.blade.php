@@ -21,7 +21,7 @@
     display-format="DD/MM/YYYY"
     placeholder="xx/xx/xxxx"
     />       --}}
-    <x-button class="max-h-10 max-w-20" href="{{ route('propietarios.report', ['estado' => $estado]) }}" target="_blank" label="generar reporte"
+    <x-button class="max-h-10 max-w-28 text-center" href="{{ route('propietarios.report', ['estado' => $estado]) }}" target="_blank" label="Generar reporte"
         info />
 
 </div>

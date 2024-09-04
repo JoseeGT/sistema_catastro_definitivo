@@ -43,66 +43,67 @@ final class InmuebleTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return Inmueble::query()
-                ->where('inmuebles.estado', '=', 'ACTIVO')->orWhere('inmuebles.estado', '=', 'INACTIVO')
-
-                ->join('tenencias_terrenos',function($tenencias_terreno){
-                    $tenencias_terreno->on('inmuebles.tenencia_terreno_id', '=', 'tenencias_terrenos.id');
-                })
-                ->join('tipos_construccion',function($tipos_construccion){
-                    $tipos_construccion->on('inmuebles.tipo_construccion_id', '=', 'tipos_construccion.id');
-                })
-                ->join('propietarios',function($propietarios){
-                    $propietarios->on('inmuebles.propietario_id', '=', 'propietarios.id');
-                })
-                ->join('codigos_catastrales',function($codigos_catastrales){
-                    $codigos_catastrales->on('codigos_catastrales.inmueble_id', '=', 'inmuebles.id');
-                })
-                ->join('direcciones',function($direcciones){
-                    $direcciones->on('direcciones.inmueble_id', '=', 'inmuebles.id');
-                })
-                ->leftjoin('calles as calle1',function($calle1){
-                    $calle1->on('direcciones.calle1_id', '=', 'calle1.id');
-                })
-                ->leftjoin('calles as calle2',function($calle2){
-                    $calle2->on('direcciones.calle2_id', '=', 'calle2.id');
-                })
-                ->leftjoin('sectores',function($sectores){
-                    $sectores->on('sectores.id', '=', 'direcciones.sector_id');
-                })
-                
-                ->select([
-                    'inmuebles.id',
-                    'inmuebles.area_terreno',
-                    'inmuebles.area_construccion',
-                    'inmuebles.area_terreno_sd',
-                    'inmuebles.area_construccion_sd',
-                    'inmuebles.tenencia_terreno_id',
-                    'inmuebles.estado',
-                    'codigos_catastrales.sec',
-                    'codigos_catastrales.man',
-                    'codigos_catastrales.par',
-                    'codigos_catastrales.sbp',
-                    'codigos_catastrales.niv',
-                    'codigos_catastrales.uni',
-                    'direcciones.calle1_id',
-                    'direcciones.calle2_id',
-                    'direcciones.sector_id',
-                    'direcciones.nota',
-                    'numero_civico',
-                    'tenencias_terrenos.nombre as tenencia_terreno_nombre',
-                    'tipos_construccion.nombre as tipo_construccion_nombre',
-                    'propietarios.nombre as propietario_nombre',
-                    'calle1.nombre as calle1_nombre',
-                    'calle2.nombre as calle2_nombre',
-                    'sectores.nombre as sector_nombre',
-                ])
-                ->orderBy('codigos_catastrales.sec', 'asc')
-                ->orderBy('codigos_catastrales.man', 'asc')
-                ->orderBy('codigos_catastrales.par', 'asc')
-                ->orderBy('codigos_catastrales.sbp', 'asc')
-                ->orderBy('codigos_catastrales.niv', 'asc')
-                ->orderBy('codigos_catastrales.uni', 'asc')
-                ;                 
+        ->join('tenencias_terrenos', function($tenencias_terreno) {
+            $tenencias_terreno->on('inmuebles.tenencia_terreno_id', '=', 'tenencias_terrenos.id');
+        })
+        ->join('tipos_construccion', function($tipos_construccion) {
+            $tipos_construccion->on('inmuebles.tipo_construccion_id', '=', 'tipos_construccion.id');
+        })
+        ->join('propietarios', function($propietarios) {
+            $propietarios->on('inmuebles.propietario_id', '=', 'propietarios.id');
+        })
+        ->join('codigos_catastrales', function($codigos_catastrales) {
+            $codigos_catastrales->on('codigos_catastrales.inmueble_id', '=', 'inmuebles.id');
+        })
+        ->join('direcciones', function($direcciones) {
+            $direcciones->on('direcciones.inmueble_id', '=', 'inmuebles.id');
+        })
+        ->leftJoin('calles as calle1', function($calle1) {
+            $calle1->on('direcciones.calle1_id', '=', 'calle1.id');
+        })
+        ->leftJoin('calles as calle2', function($calle2) {
+            $calle2->on('direcciones.calle2_id', '=', 'calle2.id');
+        })
+        ->leftJoin('sectores', function($sectores) {
+            $sectores->on('sectores.id', '=', 'direcciones.sector_id');
+        })
+        ->where(function($query) {
+            $query->where('inmuebles.estado', '=', 'ACTIVO')
+                  ->orWhere('inmuebles.estado', '=', 'INACTIVO');
+        })
+        ->select([
+            'inmuebles.id',
+            'inmuebles.area_terreno',
+            'inmuebles.area_construccion',
+            'inmuebles.area_terreno_sd',
+            'inmuebles.area_construccion_sd',
+            'inmuebles.tenencia_terreno_id',
+            'inmuebles.estado',
+            'codigos_catastrales.sec',
+            'codigos_catastrales.man',
+            'codigos_catastrales.par',
+            'codigos_catastrales.sbp',
+            'codigos_catastrales.niv',
+            'codigos_catastrales.uni',
+            'direcciones.calle1_id',
+            'direcciones.calle2_id',
+            'direcciones.sector_id',
+            'direcciones.nota',
+            'numero_civico',
+            'tenencias_terrenos.nombre as tenencia_terreno_nombre',
+            'tipos_construccion.nombre as tipo_construccion_nombre',
+            'propietarios.nombre as propietario_nombre',
+            'calle1.nombre as calle1_nombre',
+            'calle2.nombre as calle2_nombre',
+            'sectores.nombre as sector_nombre',
+        ])
+        ->orderBy('codigos_catastrales.sec', 'asc')
+        ->orderBy('codigos_catastrales.man', 'asc')
+        ->orderBy('codigos_catastrales.par', 'asc')
+        ->orderBy('codigos_catastrales.sbp', 'asc')
+        ->orderBy('codigos_catastrales.niv', 'asc')
+        ->orderBy('codigos_catastrales.uni', 'asc');
+    
 
     }
 
@@ -176,35 +177,34 @@ final class InmuebleTable extends PowerGridComponent
             // Column::make('Catastral', 'codigos_catastrales'),
             column::make('N°', '.')
                 ->index(),
-            // Column::make('Codigo  Catastral', 'codigos_catastrales'),
-            Column::make('Sec', 'sec')
-                
+            Column::make('Codigo  Catastral', 'codigos_catastrales'),
+            // Column::make('Sec', 'sec')
+            //     ->searchable(),
+            // Column::make('Man', 'man')
+            //     ->searchable(),  
+            // Column::make('Par', 'par')
+            //     ->searchable(),
+            // Column::make('Sbp', 'sbp')
+            //     ->searchable(),
+            // Column::make('Niv', 'niv')
+            //     ->searchable(),
+            //     Column::make('Uni', 'uni')
+            //     ->searchable(),   
+                Column::make('Propietario', 'propietario_nombre')
                 ->searchable(),
-            Column::make('Man', 'man')
-                ->searchable(),  
-            Column::make('Par', 'par')
+                Column::make('Calle', 'calle1_nombre')
                 ->searchable(),
-            Column::make('Sbp', 'sbp')
-                ->searchable(),
-            Column::make('Niv', 'niv')
-                ->searchable(),
-                Column::make('Uni', 'uni')
-                ->searchable(),   
-                Column::make('Propietario', 'propietario_nombre'),
-
-                Column::make('Calle', 'calle1_nombre'), 
             // Column::make('Calle', 'calle2_nombre'),
-            Column::make('N° parcela', 'numero_civico'),
-            Column::make('Sector', 'sector_nombre'),
-            
+            Column::make('N° parcela', 'numero_civico')
+            ->searchable(),
+            Column::make('Sector', 'sector_nombre')
+            ->searchable(),
             // Column::make('direcciones', 'direcciones'),
 
-             Column::make('Area T', 'area_terreno')
+             Column::make('Area T', 'area_terreno'),
 
-                ->searchable(),
 
-            Column::make('Area C.', 'area_construccion')
-                ->searchable(),
+            Column::make('Area C.', 'area_construccion'),
 
 /*             Column::make('Area terreno sd', 'area_terreno_sd')
                 ->sortable()
@@ -328,7 +328,7 @@ final class InmuebleTable extends PowerGridComponent
     public function actions(Inmueble $row): array
     {
         return [
-            Button::add('edit')
+            Button::make('edit')
                 ->slot('Editar')
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')

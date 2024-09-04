@@ -1,5 +1,7 @@
 <div>
     <x-card class=" max-w-xl class" shadow="xl" title="Registrar sector/calle">
+        <p class="text-sm text-gray-600 dark:text-gray-300">Todos los campos son obligatorios</p>
+
         <form wire:submit="submit">
             <div class="flex gap-3">
                 <x-select class="basis-2/5" wire:model="tipo"
@@ -13,9 +15,7 @@
 
             <div class="flex justify-end mt-3 gap-3">
                 <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-boton label="Crear" type="submit">Registrar</x-boton>
-
-
+                <x-button label="Registrar" type="submit"/>
             </div>
         </form>
         

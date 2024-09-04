@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-3xl text-gray-900 font-bold">
             Inmuebles
         </h2>
     </x-slot>
     
 @can('crear inmuebles')
     <div class="flex gap-20 w-full items-end  ">
-        <x-boton class="max-h-10"  onclick="Livewire.dispatch('openModal', { component: 'create-inmueble' })">Registrar Inmueble</x-boton>
+        <x-boton class="max-h-10 max-w-28 text-center"  onclick="Livewire.dispatch('openModal', { component: 'create-inmueble' })">Registrar Inmueble</x-boton>
         <livewire:inmuebles-report/>
     </div>
 @endcan

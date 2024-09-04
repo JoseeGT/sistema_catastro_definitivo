@@ -15,7 +15,7 @@
         <x-input class="mb-3" label="num de lotes" placeholder="num de lotes" wire:model="num_lotes"></x-input>
 
         <div class="flex justify-end gap-5">
-            <x-boton label="dividir" type="submit">dividir</x-boton>
+            <x-button class="w-28 h-10" label="Dividir" type="submit"/>
         </div>
     </form>
 

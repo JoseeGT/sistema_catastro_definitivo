@@ -15,15 +15,15 @@ class UsuariosSeeder extends Seeder
     public function run(): void
     {
         $User=User::create([
-            'name' => 'inspector',
-            'email' => 'inspector@ins',
+            'name' => 'Luis Lopez',
+            'email' => 'inspector@gmail.com',
             'password' => bcrypt('123456'),
 
         ]);
         
         $admin=User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin',
+            'name' => 'José García',
+            'email' => 'josecesarefraingarcia@gmail.com',
             'password' => bcrypt('123456'),
         ]);
         $admin->assignRole('Super-Admin');

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="text-3xl text-gray-900 font-bold">
             Calculo
         </h2>
     </x-slot>
     <div class="flex gap-48 w-full items-end  ">
-        <x-boton class="max-h-10" onclick="Livewire.dispatch('openModal', { component: 'create-calculo' })">Generar Calculo</x-boton>
+        <x-boton class="max-h-10 min-w-28" onclick="Livewire.dispatch('openModal', { component: 'create-calculo' })">Generar Calculo</x-boton>
         <livewire:calculo-report/>
     </div>
 

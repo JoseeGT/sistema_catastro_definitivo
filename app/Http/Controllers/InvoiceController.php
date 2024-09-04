@@ -151,7 +151,7 @@ class InvoiceController extends Controller
         $pdf->SetFont('Arial', 'B', 9);
         $pdf->Cell(20, 5, 'TOTAL.: ', 0, 0);
         $pdf->SetFont('Arial', 'u', 9);
-        $pdf->Cell(25, 6, $data["total"], 0, 1,"C","fill");
+        $pdf->Cell(25, 6, $data["total"]." MMV ", 0, 1,"C","fill");
 
         // Funcionario
 /*         $pdf->SetXY(5,-15);

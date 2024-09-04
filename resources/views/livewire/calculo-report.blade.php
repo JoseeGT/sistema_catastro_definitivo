@@ -8,7 +8,7 @@
 
 
 
-    <x-datetime-picker class=""
+    <x-datetime-picker class=" max-w-72"
     wire:model.live="desde"
 
     parse-format="YYYY-MM-DD HH:mm:ss"
@@ -17,7 +17,7 @@
     placeholder="desde" 
     :max="now()"
     />  
-    <x-datetime-picker class=""
+    <x-datetime-picker class=" max-w-72"
     wire:model.live="hasta"
 
     parse-format="YYYY-MM-DD HH:mm:ss"
@@ -26,7 +26,7 @@
     placeholder="hasta"
     :max="now()->addDays(1)->hours(12)->minutes(30)"
     />      
-    <x-button class="max-h-10 max-w-20" href="{{ route('calculos.report', ['desde' => $desde, 'hasta' => $hasta]) }}" target="_blank" label="generar reporte"
+    <x-button class="max-h-10 max-w-28 text-center" href="{{ route('calculos.report', ['desde' => $desde, 'hasta' => $hasta]) }}" target="_blank" label="Generar reporte"
         info />
 
 </div>

@@ -52,9 +52,9 @@
             @endif
 
             <div class="flex justify-end gap-3">
-                <x-button negative wire:click="$dispatch('closeModal')" label="cancelar"/>
+                <x-button class="max-h-12 min-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="cancelar"/>
                 <div>
-                    <x-boton label="completar inspeccion" type="save">completar inspeccion</x-boton>
+                    <x-button class="max-h-12 max-w-28 text-center"  label="completar inspeccion" type="save"/>
                 </div>
             </div>
         </form>

@@ -1,9 +1,11 @@
 <div>
 
     <x-card class=" max-w-xl class" shadow="xl" title="Registrar Usuario">
+        <p class="text-sm text-gray-600 dark:text-gray-300">los campos con (*) son obligatorios</p>
+
         <form wire:submit="submit">
             <x-input icon="user" class="my-2" label="Nombre del usuario*" placeholder="Nombre Completo" wire:model.live="nombre"/>
- 
+
             <div class="my-2 flex gap-3">
                 <div class=" basis-4/12 my-2">
                     <x-native-select wire:model="tipo_documento"
@@ -44,7 +46,7 @@
 
             <div class="flex justify-end gap-3">
                 <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-boton label="Crear Usuario" type="submit">Registrar</x-boton>
+                <x-button label="Registrar" type="submit"/>
             </div>
 
         </form>

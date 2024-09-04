@@ -88,7 +88,23 @@ final class InspeccionTable extends PowerGridComponent
 
     public function relationSearch(): array
     {
-        return [];
+        return [
+            
+            'inmueble.direccion.calle1' => 'nombre',
+            'inmueble.direccion.calle2' => 'nombre',
+            'inmueble.direccion.sector' => 'nombre',
+            'inmueble.direccion' => 'numero_civico',
+            'inmueble.propietario' => 'nombre',
+            'inmueble.codigocatastral' => [
+                'sec',
+                'man',
+                'par',
+                'sbp',
+                'niv',
+                'uni',
+            ],
+
+        ];
     }
 
     public function fields(): PowerGridFields
@@ -105,6 +121,9 @@ final class InspeccionTable extends PowerGridComponent
             ->add('sbp')
             ->add('niv')
             ->add('uni')
+            ->add('codigos_catastrales', function ($codigo_catastral) {
+                return $codigo_catastral->sec . '-' . $codigo_catastral->man . '-' . $codigo_catastral->par . '-' . $codigo_catastral->sbp . '-' . $codigo_catastral->niv . '-' . $codigo_catastral->uni;
+            })
             ->add('calle1_id')
             ->add('inmueble_id')
             ->add('propietario_nombre')
@@ -117,19 +136,21 @@ final class InspeccionTable extends PowerGridComponent
     {
         return [
             Column::make('N°', 'id'),
-            Column::make('Sec', 'sec')
+            Column::make('Codigo  Catastral', 'codigos_catastrales'),
+
+        //     Column::make('Sec', 'sec')
             
-            ->searchable(),
-        Column::make('Man', 'man')
-            ->searchable(),  
-        Column::make('Par', 'par')
-            ->searchable(),
-        Column::make('Sbp', 'sbp')
-            ->searchable(),
-        Column::make('Niv', 'niv')
-            ->searchable(),
-            Column::make('Uni', 'uni')
-            ->searchable(),  
+        //     ->searchable(),
+        // Column::make('Man', 'man')
+        //     ->searchable(),  
+        // Column::make('Par', 'par')
+        //     ->searchable(),
+        // Column::make('Sbp', 'sbp')
+        //     ->searchable(),
+        // Column::make('Niv', 'niv')
+        //     ->searchable(),
+        //     Column::make('Uni', 'uni')
+        //     ->searchable(),  
             Column::make('Propietario Nombre', 'propietario_nombre'),
             Column::make('Calle', 'calle1_nombre'), 
             Column::make('N°', 'numero_civico'),

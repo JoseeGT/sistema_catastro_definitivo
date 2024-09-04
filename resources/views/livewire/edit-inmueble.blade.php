@@ -77,11 +77,11 @@
       
            
             <div class="flex gap-3 justify-end items-end">
-                <x-button type="button" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button class="max-w-28 min-h-10 text-center" type="button" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
                 @if ($inmueble->plano_path != null)
-                <x-boton ><a href="{{($inmueble->plano_path)}}" target="_blank">Ver plano del Inmueble</a></x-boton>
+                <x-button class="max-w-28 min-h-10 text-center" href="{{($inmueble->plano_path)}}" target="_blank" label="Ver plano"></x-button>
                     @endif
-                <x-boton label="Actualizar inmueble" type="submit">Actualizar inmueble</x-boton>
+                <x-button class="max-w-28 min-h-10 text-center" label="Actualizar" type="submit">Actualizar</x-button>
             </div>
         </form>
         

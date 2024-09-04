@@ -1,6 +1,8 @@
 <div>
 
     <x-card class=" max-w-xl class" shadow="xl" title="Asignar tarea">
+        <p class="text-sm text-gray-600 dark:text-gray-300">los campos con (*) son obligatorios</p>
+
         <form wire:submit="submit">
             
             <div class="my-2 flex gap-3">
@@ -27,7 +29,7 @@
 
             <div class="flex justify-end gap-5">
                 {{-- <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/> --}}
-                <x-boton label="Crear tarea" type="submit">Crear tarea</x-boton>
+                <x-button class="w-30 h-10" label="Asignar tarea" type="submit"/>
             </div>
 
         </form>

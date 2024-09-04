@@ -106,25 +106,31 @@ final class FichaTable extends PowerGridComponent
             ->add('calle1_id')
             ->add('inmueble_id')
             ->add('propietario_nombre')
+            ->add('codigos_catastrales', function ($codigo_catastral) {
+                return $codigo_catastral->sec . '-' . $codigo_catastral->man . '-' . $codigo_catastral->par . '-' . $codigo_catastral->sbp . '-' . $codigo_catastral->niv . '-' . $codigo_catastral->uni;
+            })
             ->add('created_at');
+
     }
 
     public function columns(): array
     {
         return [
             Column::make('Id', 'id'),
-            Column::make('Sec', 'sec')
-            ->searchable(),
-        Column::make('Man', 'man')
-            ->searchable(),  
-        Column::make('Par', 'par')
-            ->searchable(),
-        Column::make('Sbp', 'sbp')
-            ->searchable(),
-        Column::make('Niv', 'niv')
-            ->searchable(),
-            Column::make('Uni', 'uni')
-            ->searchable(),  
+            Column::make('Codigo  Catastral', 'codigos_catastrales')
+                ->searchable(),
+        //     Column::make('Sec', 'sec')
+        //     ->searchable(),
+        // Column::make('Man', 'man')
+        //     ->searchable(),  
+        // Column::make('Par', 'par')
+        //     ->searchable(),
+        // Column::make('Sbp', 'sbp')
+        //     ->searchable(),
+        // Column::make('Niv', 'niv')
+        //     ->searchable(),
+        //     Column::make('Uni', 'uni')
+        //     ->searchable(),  
             Column::make('Propietario Nombre', 'propietario_nombre'),
             Column::make('Calle', 'calle1_nombre'), 
             Column::make('N°', 'numero_civico'),

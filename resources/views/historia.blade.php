@@ -20,6 +20,7 @@
 
   <!-- google font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <!-- Favicon  -->
   <link rel="icon" href="src/img/favicon.jpg">
@@ -27,72 +28,87 @@
 <body class="text-gray-700 pt-9 sm:pt-10">
   <!-- ========== { HEADER }==========  -->
   <header class="fixed top-0 left-0 right-0 z-50">
-     <nav class="bg-gray-800">
-       <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
-          <div class="flex justify-between">
+    
+    <nav class="bg-gray-800">
+      <div class="xl:container mx-auto px-3 sm:px-4 xl:px-2">
+         <div class="flex justify-between">
 
-          <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center">        <x-application-logo class="block h-20 p-3 w-auto fill-white" />
-            Catastro | Municipio Libertador</div>
-            
-            <div class="flex flex-row">
-              <!-- nav menu -->
-              <ul class="navbar hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
+         <div class="mx-w-10 text-2xl font-bold capitalize text-white flex items-center"><x-application-logo class="block h-20 p-3 w-auto fill-white" />
+           Catastro | Municipio Libertador</div>
+           
+           <div class="flex flex-row">
+             <!-- nav menu -->
+             <ul class="navbar gap-2 hidden lg:flex lg:flex-row text-white text-sm items-center font-bold">
 
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/">Inicio</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/acerca">Historia</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/preguntas">Preguntas Frecuentes</a>
-                </li>
-                <li class="relative border-l border-gray-800 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="/archivos">Descargar Archivos</a>
-                </li>
-                <li class="relative border-l border-gray-900 bg-gray-700 hover:bg-gray-900">
-                  <a class="block py-3 px-6 border-b-2 border-transparent" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
-                </li>
-              </ul>
+               <li class="relative border-l border-gray-800 ">
+                 <a class="block py-3 px-3  hover:border-b-2 " href="/">Inicio</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/acerca">Historia</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3  hover:border-b-2" href="/preguntas">Preguntas Frecuentes</a>
+               </li>
+               <li class="relative border-l border-gray-800">
+                 <a class="block py-3 px-3 hover:border-b-2" href="/archivos">Descargar Archivos</a>
+               </li>
 
-              <!-- search form & mobile nav -->
-              <div class="flex flex-row items-center text-gray-300">
+               <li class="relative bg-gray-700 hover:bg-gray-900">
+                 <a class="block py-3 px-3" href="{{ route('login') }}">Iniciar Sesión Como Funcionario</a>
+               </li>
+             </ul>
 
 
-                <div class="relative hover:bg-gray-800 block lg:hidden">
-                  <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
-                    <span class="sr-only">Mobile menu</span>
-                    <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg> Menu
-                  </button>
-                </div>
+             <!-- search form & mobile nav -->
+             <div class="flex flex-row items-center text-gray-300">
+
+
+               <div class="relative hover:bg-gray-800 block lg:hidden">
+                 <button type="button" class="menu-mobile block py-3 px-6 border-b-2 border-transparent">
+                   <span class="sr-only">Mobile menu</span>
+                   <svg class="inline-block h-6 w-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                   </svg> Menu
+                 </button>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+    </nav>
+ </header><!-- end header -->
+  <main id="content">
+    <!-- advertisement -->
+    <header class="h-4/6">
+      <div class="w-full h-80  bg-center bg-cover"
+      style="background-image: url('{{ asset('portal/hero-image.jpeg') }}');">
+        <div class="flex items-center justify-center w-full h-full bg-gray-900 bg-opacity-60 py-12">
+          <div class="text-center">
+            <div class="container px-4 mx-auto">
+              <div class="max-w-4xl mx-auto text-center">
+                {{-- <span class="text-gray-200 font-semibold uppercase tracking-widest">Catastro</span> --}}
+                <h2 class="mt-8 mb-6 text-4xl lg:text-5xl font-bold text-gray-100">Historia</h2>
               </div>
             </div>
           </div>
         </div>
-     </nav>
-  </header><!-- end header -->
-
-  <main id="content">
-    <!-- advertisement -->
-    <div class="max-w-screen-xl mx-auto p-5 sm:p-8 md:p-12 relative">
-      <div class="bg-cover h-64 text-center overflow-hidden"
-          style="height: 450px; background-image: url('{{ asset('portal/hero-image.jpeg') }}')">
       </div>
+    </header>
+    <div class="max-w-screen-xl mx-auto p-5 sm:p-8 md:p-12 relative">
+
       <div class="max-w-2xl mx-auto">
           <div
-              class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+              class=" bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
             
               <div class="">
-                 <h1 href="#" class="text-gray-900 font-bold text-3xl mb-2">Historia
-                </h1>
-                <h3 class="text-2xl font-bold my-5">Origenes y fundación</h3>
+
+                <h3  data-aos="fade-up"      data-aos-delay="300"
+                 class="text-2xl font-bold my-5">Origenes y fundación</h3>
 
 
                   </p>
                   
-                  <p class="text-base leading-8 my-5">
+                  <p data-aos="fade-up"      data-aos-delay="300" class="text-base leading-8 my-5">
                     La Oficina Municipal de Catastro, ubicada en Palo Negro, estado Aragua, tiene sus raíces en la fundación 
                     del municipio Libertador en 1989, juntamente con otras instituciones y dependencias municipales bajo la 
                     administración del primer alcalde de Palo Negro, Guillermo Morales Contreras.Dicho municipio, antes de ser 
@@ -101,21 +117,21 @@
                      las oficinas gubernamentales para realizar cualquier trámite de carácter público.
                   </p>
   
-                  <h3 class="text-2xl font-bold my-5">Independencia del Municipio Libertador
+                  <h3 data-aos="fade-up"      data-aos-delay="300" class="text-2xl font-bold my-5">Independencia del Municipio Libertador
                   </h3>
   
-                  <p class="text-base leading-8 my-5">
+                  <p data-aos="fade-up"      data-aos-delay="300" class="text-base leading-8 my-5">
                     La situación cambió el 23 de octubre de 1989, cuando el municipio alcanzó la independencia y se conformó
                     como el Municipio Autónomo Libertador. A principios del siguiente año, más precisamente en marzo de 1990,
                     se estableció la alcaldía municipal Libertador en Palo Negro. Entre las primeras dependencias establecidas
                     se encontraba la encargada de manejar el catastro del municipio.
                   </p>
 
-                  <h3 class="text-2xl font-bold my-5">Retos Iniciales de la Oficina de Catastro
+                  <h3 data-aos="fade-up"      data-aos-delay="300"  class="text-2xl font-bold my-5">Retos Iniciales de la Oficina de Catastro
 
                   </h3>
   
-                  <p class="text-base leading-8 my-5">
+                  <p data-aos="fade-up"      data-aos-delay="300"  class="text-base leading-8 my-5">
                     A pesar de estar establecida, la Oficina Municipal de Catastro del Municipio Libertador tardó un par de años
                     en poder realizar sus actividades de manera óptima. Esto se debió a que tuvieron que llevar a cabo proyectos 
                     relacionados con el catastro municipal de los inmuebles. La alcaldía del municipio Santiago Mariño, al tener
@@ -124,10 +140,10 @@
                     y parcela. La recién fundada oficina municipal de catastro tuvo que pasar un tiempo actualizando la información
                     de los inmuebles con los que se contaba.
                   </p>
-                  <h3 class="text-2xl font-bold my-5">Papel Crucial y Desafíos Actuales
+                  <h3 data-aos="fade-up"      data-aos-delay="300"  class="text-2xl font-bold my-5">Papel Crucial y Desafíos Actuales
                   </h3>
   
-                  <p class="text-base leading-8 my-5">
+                  <p  data-aos="fade-up"      data-aos-delay="300" class="text-base leading-8 my-5">
                     Desde entonces, la Oficina Municipal de Catastro ha desempeñado un papel crucial en la gestión y organización 
                     territorial de la región. Sin embargo, a pesar de su importancia, esta oficina enfrenta desafíos relacionados 
                     con la obsolescencia tecnológica, teniendo que realizar procesos internos de actualización de datos y cálculos 
@@ -195,11 +211,14 @@
   <script src="src/vendors/glightbox/dist/js/glightbox.min.js"></script>
   <script src="src/vendors/@splidejs/splide/dist/js/splide.min.js"></script>
   <script src="src/vendors/@splidejs/splide-extension-video/dist/js/splide-extension-video.min.js"></script>
-  
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <!-- Start development js -->
   <script src="src/js/theme.js"></script>
   <!-- End development js -->
-
+  <script>
+    AOS.init();
+  </script>
   <!-- Production js -->
   <!-- <script src="dist/js/scripts.js"></script> -->
 </body>

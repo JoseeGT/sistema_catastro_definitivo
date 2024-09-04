@@ -70,6 +70,8 @@ class Unificar extends ModalComponent
             'descripcion' => 'Unificó Inmuebles: '.json_encode($this->inmuebles_ids),
             'fecha' => Carbon::now(),
         ]);
+        $this->dispatch('pg:eventRefresh-UnificacionesTable');
+
         // Cambiar el estado de cada inmueble original a "INACTIVO"
         // foreach ($this->inmuebles_ids as $inmueble_id) {
         //     $inmueble = Inmueble::find($inmueble_id);

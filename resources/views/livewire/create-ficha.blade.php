@@ -11,7 +11,7 @@
             wire:model.live="inmueble_id"
         />
     
-        <x-boton class="h-10" wire:click="loadInmuebleData({{ $inmueble_id }})"> Cargar Inmueble</x-boton>
+        <x-button class="max-h-10 min-w-28 text-center" wire:click="loadInmuebleData({{ $inmueble_id }})" label="Cargar Inmueble"/> 
 
         </div>    
         <form wire:submit.prevent="submit">
@@ -125,7 +125,8 @@
         /> --}}
             
             <div class="flex justify-end gap-3">
-                <x-boton label="Crear" type="submit">Generar</x-boton>
+                <x-button class="min-h-10 min-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button label="Crear" type="submit" class="min-h-10 min-w-28 text-center" />
             </div>
         </form>
 

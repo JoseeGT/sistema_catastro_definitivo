@@ -2,6 +2,8 @@
 
     <x-card class=" max-w-xl class" shadow="xl" title="Registrar Propietario">
         <form wire:submit="submit">
+            <p class="text-sm text-gray-600 dark:text-gray-300">los campos con (*) son obligatorios</p>
+            
             <x-input icon="user" class="my-2" label="nombre*" placeholder="Nombre del propietario" wire:model.live="nombre"/>
  
             <div class="my-2 flex gap-3">
@@ -35,10 +37,10 @@
                         :mask="[' ###-####']"
 />  
             </div>
-            
+
             <div class="flex justify-end gap-3">
-                <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-boton label="Registrar Propietario" type="submit">Registrar Propietario</x-boton>
+                <x-button class="min-h-10 min-w-28 text-center" negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button info  class="min-h-10 min-w-28 text-center" type="submit" label="Registrar"/>
 
 
             </div>

@@ -347,7 +347,7 @@ final class DivisionesTable extends PowerGridComponent
     public function actionRules($row): array
     {
         return [
-            Rule::rows()
+                Rule::rows()
                 ->when(fn ($row) => $row->estado == 'INACTIVO')
                 ->setAttribute('class', 'bg-red-100 hover:bg-red-200'),
                 Rule::rows()

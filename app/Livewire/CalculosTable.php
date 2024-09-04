@@ -118,7 +118,9 @@ final class CalculosTable extends PowerGridComponent
             ->add('impuesto_terreno')
             ->add('impuesto_construccion')
             ->add('total')
-            
+            ->add('codigos_catastrales', function ($codigo_catastral) {
+                return $codigo_catastral->sec . '-' . $codigo_catastral->man . '-' . $codigo_catastral->par . '-' . $codigo_catastral->sbp . '-' . $codigo_catastral->niv . '-' . $codigo_catastral->uni;
+            })
             ->add('descuento')
             ->add('sub_total')
             ->add('acueducto')
@@ -161,18 +163,20 @@ final class CalculosTable extends PowerGridComponent
             Column::make('Id', 'id')
                 ->searchable(),
             Column::make('Referencia', 'ref'),
-            Column::make('Sec', 'sec')
-            ->searchable(),
-        Column::make('Man', 'man')
-            ->searchable(),  
-        Column::make('Par', 'par')
-            ->searchable(),
-        Column::make('Sbp', 'sbp')
-            ->searchable(),
-        Column::make('Niv', 'niv')
-            ->searchable(),
-            Column::make('Uni', 'uni')
-            ->searchable(),  
+            Column::make('Codigo  Catastral', 'codigos_catastrales'),
+
+        //     Column::make('Sec', 'sec')
+        //     ->searchable(),
+        // Column::make('Man', 'man')
+        //     ->searchable(),  
+        // Column::make('Par', 'par')
+        //     ->searchable(),
+        // Column::make('Sbp', 'sbp')
+        //     ->searchable(),
+        // Column::make('Niv', 'niv')
+        //     ->searchable(),
+        //     Column::make('Uni', 'uni')
+        //     ->searchable(),  
             Column::make('Propietario Nombre', 'propietario_nombre'),
             Column::make('Calle', 'calle1_nombre'), 
             Column::make('N°', 'numero_civico'),

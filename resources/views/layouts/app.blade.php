@@ -11,8 +11,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        {{-- <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script> --}}
-        <!-- Scripts -->
+
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <wireui:scripts />
 
@@ -22,7 +21,7 @@
         <div class="flex h-screen bg-gray-200">
 
             <!-- sidebar -->
-            <div class="hidden md:flex flex-col w-64 bg-gray-800" >
+            <div class="hidden md:flex flex-col w-76 bg-gray-800" >
                 <div class="flex items-center justify-center h-28 bg-gray-900">
                     <span class="text-white font-bold uppercase"><div class="shrink-0 flex items-center">
                         <a href="{{ route('dashboard') }}" wire:navigate>
@@ -170,7 +169,7 @@
 
                     </nav>
 
-                        <a href="" target="_blank" wire:navigate class=" bg-gray-900 flex items-center justify-center h-14 px-4  py-2 mt-2 text-gray-100 hover:bg-gray-700">
+                        <a href="{{ asset('portal/manual1.pdf') }}" target="_blank" class=" bg-gray-900 flex items-center justify-center h-14 px-4  py-2 mt-2 text-gray-100 hover:bg-gray-700">
                             <div class="flex items-center mr-8">
                                 <x-icon name="question-mark-circle" class="w-5 h-5 mr-1" />                         
                                 Ayuda
@@ -184,7 +183,7 @@
 
             <div class="flex flex-col flex-1 overflow-y-auto" style="background-image: url('{{ asset('portal/imagen.png') }}');   background-position: center;
                  background-size: 150% ;" >
-                <div class="flex flex-col flex-1 overflow-y-auto bg-gray-500 bg-opacity-30">
+                <div class="flex flex-col flex-1 overflow-y-auto bg-gray-300 bg-opacity-40">
                     <div class="border-b border-gray-300"><livewire:layout.navigation /></div>
                     <div class="px-10 py-6  space-y-4">
                         <div class="pb-1 border-b-2 border-gray-800 w-fit px-3">

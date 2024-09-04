@@ -158,6 +158,8 @@ class RealizarInspeccion extends ModalComponent
 
 
         // Cerrar el modal
+        $this->dispatch('pg:eventRefresh-InspeccionTable');
+
         $this->closeModal();
     }
 

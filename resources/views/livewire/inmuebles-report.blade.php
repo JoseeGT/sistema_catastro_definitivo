@@ -1,6 +1,6 @@
     <div class="w-full flex gap-2 items-end    justify-end" >
         <x-select class="max-w-48"
-        wire:model.live="estado"
+        wire:model.live="estatus"
         label="Estatus"
         placeholder="seleccionar estado"
         :options="['TODOS   ','ACTIVO', 'INACTIVO']"/>
@@ -37,7 +37,7 @@ wire:model="sector_id"
     display-format="DD/MM/YYYY"
     placeholder="xx/xx/xxxx"
     />       --}}
-    <x-button class="max-h-10 max-w-20" href="{{ route('inmuebles.report', ['estado' => $estado, 'sec' => $sec]) }}" target="_blank" label="Generar reporte"
+    <x-button class="max-h-10 max-w-28 text-center" href="{{ route('inmuebles.report', ['estado' => $estado, 'sec' => $sec]) }}" target="_blank" label="Generar reporte"
         info />
 
 </div>

@@ -42,9 +42,9 @@
             placeholder="selecciona el estado del propietario"
             :options="['ACTIVO', 'INACTIVO']"/>
 
-            <div class="flex mt-5 justify-between gap-5">
-                <x-button negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
-                <x-button label="editar" type="submit"/>
+            <div class="flex mt-5 justify-end gap-3">
+                <x-button  negative wire:click="$dispatch('closeModal')" label="Cancelar"/>
+                <x-button class="min-w-24" label="Editar" type="submit"/>
 
 
             </div>
